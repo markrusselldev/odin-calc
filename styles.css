@@ -13,13 +13,45 @@ html {
 }
 
 /* styles */
+/* html,
+body {
+  height: 100%;
+} */
+
+/* Full page background image */
+body {
+  background-image: url(images/background.jpg);
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  /* Background image doesn’t tile */
+  background-repeat: no-repeat;
+  /* Background image is fixed in the viewport so that it doesn’t move when the content’s height is greater than the image’s height */
+  background-attachment: fixed;
+  /* This is what makes the background image rescale based on the container’s size */
+  background-size: cover;
+  /* Set a background color that will be displayed while the background image is loading */
+  background-color: #464646;
+}
+
 .calculator {
-  border: 0;
-  border-radius: 7px;
+  border: 8px groove #464646;
+  opacity: 0.4;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  background: lavender;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.calculator-screen {
+  width: 100%;
+  font-size: 5rem;
+  height: 80px;
+  border: none;
+  background-color: #252525;
+  color: #fff;
+  text-align: right;
+  padding-right: 20px;
+  padding-left: 10px;
 }

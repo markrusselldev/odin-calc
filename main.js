@@ -1,4 +1,4 @@
-/* math functions */
+/* math functions */ 
 const add = function (arr) {
   return arr.reduce((last, next) => last + next, 0);
 };
@@ -16,7 +16,6 @@ const divide = function (arr) {
 };
 
 /* main functions */
-
 let input = [3, "*", 4, "/", 2];
 
 function operate(input) {
@@ -24,4 +23,3 @@ function operate(input) {
   const numbers = input.filter(e => !operators.includes(e));
   console.log(operators, numbers);
 }
-operate(input);

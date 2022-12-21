@@ -19,7 +19,7 @@ html {
 
 /* Full page background image */
 body {
-  background-image: url(images/bg-stone3.jpg);
+  background-image: url("images/bg-stone3.jpg");
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
   /* Background image doesn’t tile */
@@ -35,9 +35,21 @@ body {
 }
 
 .odin {
-  background-image: url(images/odin.png) no-repeat center !important ;
-  width: 100px;
-  height: 100px;
+  background: transparent center/cover url("images/odin.png") no-repeat;
+  height: 105px;
+  width: 79px;
+  margin: 7vh auto 0 auto;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 3rem;
+  color: #252525;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.7);
 }
 
 .calculator {
@@ -59,12 +71,17 @@ body {
   line-height: 4rem;
   height: 80px;
   border: none;
-  /* background-color: #252525;
-  color: #97928c; */
+  background-color: #252525;
+  color: #97928c;
   text-align: right;
   padding: 0 20px 0 20px;
   margin: 5px 5px 0 5px;
   opacity: 0.75;
+  border: 3px groove #797979;
+  box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+.glow {
   /* Glowing "flux" background */
   box-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
   background-color: #28d7fe;
@@ -100,7 +117,7 @@ button {
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);
 }
 
-button:hover {
+.flux:hover {
   /* color: #337cac; */
   text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
   color: #fed128;
@@ -129,6 +146,7 @@ button:active {
   height: 100%;
   grid-row: 2 / 5;
   grid-column: 4 / 5;
+  font-size: 6rem;
 }
 
 .equal-sign:hover {
@@ -166,10 +184,10 @@ button:active {
 }
 
 .flux {
-  animation: flux 3s linear infinite;
-  -moz-animation: flux 3s linear infinite;
-  -webkit-animation: flux 3s linear infinite;
-  -o-animation: flux 3s linear infinite;
+  animation: flux 5s linear infinite;
+  -moz-animation: flux 5s linear infinite;
+  -webkit-animation: flux 5s linear infinite;
+  -o-animation: flux 5s linear infinite;
 }
 
 .flux:hover {

@@ -27,6 +27,16 @@ power.addEventListener("click", () => {
   });
 });
 
+// interface connections
+
+function display(value) {
+  const scr = document.querySelector(".calculator-screen");
+  scr.textContent += value;
+  console.log(value);
+}
+
+// need to loop buttons and add event listeners here
+
 // main functions
 let inputArray = [7, "+", 3, "*", 4, "/", 2]; // 20
 
@@ -38,6 +48,7 @@ function operate(inputArray) {
   return evaluate(numsArray, opsArray);
 }
 
+// non-PEMDAS math operation and evaluate functions
 function operation(a, operator, b) {
   if (a === 0 || b === 0) prompt("Odin frowns upon your zero!");
   switch (operator) {

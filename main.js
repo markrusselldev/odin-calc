@@ -73,12 +73,14 @@ function toggleText(element) {
   const content = element.innerHTML;
   switch (element.id) {
     case "col1":
-      if (content.value !== "ODINS") {
-        element.textContent = "ODINS";
-        console.log("inside if content: " + content);
+      if (content === "ODINS") {
+        console.log("if content: " + content);
+        return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;");
+      } else {
+        console.log("else content: " + content);
+        return (element.innerHTML = "ODINS");
       }
-      element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;";
-      console.log("outside if content: " + content);
+
       break;
     case "col2":
       // console.log("content: " + content);

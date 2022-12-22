@@ -68,7 +68,7 @@ function display(value) {
   // console.log("screen.value: " + screen.value);
   // console.log("displayValue " + displayValue);
 }
-
+// Toggle Runic/English text
 function toggleText(element) {
   const content = element.innerHTML;
   switch (element.id) {
@@ -94,13 +94,25 @@ function toggleText(element) {
       }
       break;
     case "col4":
-      // console.log("content: " + content);
+      if (content === "MORTA") {
+        return (element.innerHTML = "&#5847;&#5806;&#5809;&#5839;&#5800;");
+      } else {
+        return (element.innerHTML = "MORTA");
+      }
       break;
     case "col5":
-      // console.log("content: " + content);
+      if (content === "LSDOP") {
+        return (element.innerHTML = "&#5850;&#5835;&#5841;&#5806;&#5832;");
+      } else {
+        return (element.innerHTML = "LSDOP");
+      }
       break;
     case "col6":
-      // console.log("content: " + content);
+      if (content === "EMDAS") {
+        return (element.innerHTML = "&#5826;&#5847;&#5841;&#5800;&#5835;");
+      } else {
+        return (element.innerHTML = "EMDAS");
+      }
       break;
     default:
       return;

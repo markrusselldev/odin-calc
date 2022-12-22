@@ -15,42 +15,69 @@ const divide = function (arr) {
   return arr.reduce((last, next) => last / next);
 };
 
-// toggle "power on" styles
+// get elements
 const power = document.querySelector(".odin");
-power.addEventListener("click", () => {
-  const screen = document.querySelector(".calculator-screen");
-  screen.classList.toggle("glow");
+const buttons = document.querySelectorAll(".calculator-keys button");
+let screen = document.querySelector(".calculator-screen");
+let inputArray = [];
+let inputStr = "";
 
-  const buttons = document.querySelectorAll(".calculator-keys button");
+// const validInputRegex = new RegExp("(\\d+(\\.[0-9])?[+\\-*\\/^%])*(\\d+)", "gm");
+
+// toggle "power on" styles
+power.addEventListener("click", () => {
+  screen.classList.toggle("glow");
   buttons.forEach(button => {
     button.classList.toggle("flux");
   });
 });
 
-// interface connections
+// loop buttons and add event listeners
+buttons.forEach(button => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    //inputArray.push(button.value);
+    inputStr += button.value;
+    display(button.value);
+    console.log("inputStr: " + inputStr);
+  });
+});
 
+// display
 function display(value) {
-  const scr = document.querySelector(".calculator-screen");
-  scr.textContent += value;
-  console.log(value);
+  let displayValue = value;
+  if (screen.value === "0") screen.value = "";
+  // https://www.toptal.com/designers/htmlarrows/math/
+  // javascript escape notation for a character in a quoted string is \uxxxx
+  // where xxxx is four hexadecimal digits that specify the Unicode code number
+  if (value === "+") displayValue = "\u002B";
+  if (value === "-") displayValue = "\u2212";
+  if (value === "*") displayValue = "\u00D7";
+  if (value === "/") displayValue = "\u00F7";
+
+  // console.log("screen.value: " + screen.value);
+  screen.value += displayValue;
+  // console.log("displayValue " + displayValue);
+  // console.log("screen.value after: " + screen.value);
 }
 
-// need to loop buttons and add event listeners here
-
 // main functions
-let inputArray = [7, "+", 3, "*", 4, "/", 2]; // 20
-
-function operate(inputArray) {
-  // const opsArray = inputArray.filter(e => e === "+" || e === "-" || e === "*" || e === "/");
-  const opsArray = inputArray.filter(e => isNaN(e));
-  const numsArray = inputArray.filter(e => !opsArray.includes(e));
-  //console.log(opsArray, numsArray);
+function operate(inputStr) {
+  // if (!validInputRegex.test(inputStr)) {
+  //   alert("Don't you know how math works, mortal? Number, operator, number, etc.");
+  //   return;
+  // }
+  const numsArray = inputStr.match(/[0-9]+/g);
+  const opsArray = inputStr.match(/[\/\+\-\*]+/g);
+  // console.log(numsArray);
+  // console.log(opsArray);
   return evaluate(numsArray, opsArray);
 }
 
 // non-PEMDAS math operation and evaluate functions
 function operation(a, operator, b) {
-  if (a === 0 || b === 0) prompt("Odin frowns upon your zero!");
+  a = Number(a);
+  b = Number(b);
   switch (operator) {
     case "+":
       return a + b;
@@ -59,16 +86,22 @@ function operation(a, operator, b) {
     case "*":
       return a * b;
     case "/":
-      return a / b; // This will fail spectacularly if b is zero
+      if (b === 0) {
+        // check if b is zero before dividing
+        alert("Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgard!");
+        return;
+      }
+      return a / b;
     default:
       console.log("Unknown operator: " + operator);
-      return NaN;
+      return;
   }
 }
 
 function evaluate(numsArray, opsArray) {
   // require numsArray to have exactly one item more than opsArray
   if (opsArray.length + 1 != numsArray.length) {
+    alert("Don't you know how simple math works, mortal? Number, operator, number, operator, number, etc.");
     console.log("Error: Array lengths mismatch");
     return; // return if lengths aren't compatible
   }
@@ -80,6 +113,6 @@ function evaluate(numsArray, opsArray) {
     resultTally = operation(resultTally, opsArray[index], numsArray[index + 1]);
   });
 
-  console.log("Results: " + resultTally);
+  // console.log("Results: " + resultTally);
   return resultTally;
 }

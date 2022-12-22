@@ -21,17 +21,15 @@ const odin = document.querySelector(".odin");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 let screen = document.querySelector(".calculator-screen");
-let inputArray = [];
 let inputStr = "";
-
-// const validInputRegex = new RegExp("(\\d+(\\.[0-9])?[+\\-*\\/^%])*(\\d+)", "gm");
 
 // toggle "power on" styles
 powerButton.addEventListener("click", () => {
   odin.classList.toggle("power-on");
-  screen.classList.toggle("glow");
+  powerButton.classList.toggle("power-on");
+  screen.classList.toggle("firey-magic-light");
   titleRunes.forEach(title => {
-    title.classList.toggle("neon");
+    title.classList.toggle("firey-light");
   });
   keyButtons.forEach(button => {
     button.classList.toggle("flux");
@@ -42,7 +40,6 @@ powerButton.addEventListener("click", () => {
 keyButtons.forEach(button => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
-    //inputArray.push(button.value);
     inputStr += button.value;
     display(button.value);
     console.log("inputStr: " + inputStr);
@@ -60,19 +57,13 @@ function display(value) {
   if (value === "-") displayValue = "\u2212";
   if (value === "*") displayValue = "\u00D7";
   if (value === "/") displayValue = "\u00F7";
-
-  // console.log("screen.value: " + screen.value);
   screen.value += displayValue;
+  // console.log("screen.value: " + screen.value);
   // console.log("displayValue " + displayValue);
-  // console.log("screen.value after: " + screen.value);
 }
 
 // main functions
 function operate(inputStr) {
-  // if (!validInputRegex.test(inputStr)) {
-  //   alert("Don't you know how math works, mortal? Number, operator, number, etc.");
-  //   return;
-  // }
   const numsArray = inputStr.match(/[0-9]+/g);
   const opsArray = inputStr.match(/[\/\+\-\*]+/g);
   // console.log(numsArray);

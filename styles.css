@@ -55,14 +55,14 @@ main {
 
 .odin {
   background: transparent center/cover url("images/odin.png") no-repeat;
-  height: 105px;
-  width: 79px;
+  height: 100px;
+  width: 100px;
   opacity: 0.75;
   margin: 20px auto;
 }
 
 .odin.power-on {
-  background: transparent center/cover url("images/odin-power-on.png");
+  background: transparent center/cover url("images/odin-power-on.png") no-repeat;
 }
 
 .power-button {
@@ -72,6 +72,15 @@ main {
   border: 3px groove #797979;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.power-button.power-on {
+  /* Created with https://www.css-gradient.com */
+  background: transparent;
+  background: -webkit-radial-gradient(center, #fed129, #ffffff00);
+  background: -moz-radial-gradient(center, #fed129, #ffffff00);
+  background: radial-gradient(circle at center, #fed129, transparent 70%);
+  /* border-color: #fed129; */
 }
 
 .power-button:active {
@@ -87,12 +96,13 @@ main {
   height: 50vh;
 }
 
+/* Cross browser compliant vertical text */
 .vertical-text {
   width: 0px;
   word-break: break-all;
   white-space: pre-wrap;
 }
-
+/* Cross browser compliant vertical text v2 */
 /* .vertical-text {
   width: 0px;
   word-wrap: break-word;
@@ -102,10 +112,6 @@ main {
 
 .calculator {
   border: 3px groove #7c7c7c;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   width: 360px;
   margin: 0 0 0 40px;
   height: 100%;
@@ -131,12 +137,18 @@ main {
   box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.5);
 }
 
-.glow {
-  /* Glowing "flux" background */
+.firey-magic-light {
+  /* Firey light text */
+  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fed128, 0 0 10vw #fed128, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
+  color: #fed128;
+  /* Magic light background */
   box-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
   background-color: #28d7fe;
-  /* Glowing "neon" text */
-  text-shadow: 0 0 0.6vw #fa1c16, 0 0 0.3vw #fa1c16, 0 0 0.4vw #fed128;
+}
+
+.firey-light {
+  /* Firey text */
+  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fed128, 0 0 10vw #fed128, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
   color: #fed128;
 }
 
@@ -225,7 +237,7 @@ button:active {
 @keyframes neon {
   0%,
   100% {
-    text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
+    text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
     color: #fed128;
   }
   50% {

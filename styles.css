@@ -113,11 +113,15 @@ main {
   color: #252525;
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);
   height: 50vh;
+  /* The following three styles are necessary to center the letters */
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Cross browser compliant vertical text */
 .vertical-text {
-  width: 0px;
+  width: 0;
   word-break: break-all;
   white-space: pre-wrap;
 }
@@ -126,7 +130,6 @@ main {
   width: 0px;
   word-wrap: break-word;
   white-space: pre-wrap;
-  color: rgb(121, 202, 0);
 } */
 
 .calculator {

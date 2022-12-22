@@ -87,7 +87,11 @@ function toggleText(element) {
       }
       break;
     case "col3":
-      // console.log("content: " + content);
+      if (content === "LATOR") {
+        return (element.innerHTML = "&#5850;&#5800;&#5839;&#5806;&#5809;");
+      } else {
+        return (element.innerHTML = "LATOR");
+      }
       break;
     case "col4":
       // console.log("content: " + content);

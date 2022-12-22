@@ -37,6 +37,8 @@ body {
 /* Page structure */
 header {
   height: 200px;
+  display: flex;
+  align-items: center;
 }
 .container {
   display: flex;
@@ -56,15 +58,24 @@ main {
   height: 105px;
   width: 79px;
   opacity: 0.75;
+  margin: 20px auto;
 }
 
-.power {
-  width: 150px;
-  height: 150px;
+.odin.power-on {
+  background: transparent center/cover url("images/odin-power-on.png");
+}
+
+.power-button {
+  width: 140px;
+  height: 140px;
   margin: 0 auto;
-  border: 3px groove #7c7c7c;
+  border: 3px groove #797979;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.power-button:active {
+  border: 2px inset #797979;
 }
 
 .title {

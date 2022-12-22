@@ -16,8 +16,10 @@ const divide = function (arr) {
 };
 
 // get elements
-const power = document.querySelector(".odin");
-const buttons = document.querySelectorAll(".calculator-keys button");
+const powerButton = document.querySelector(".power-button");
+const odin = document.querySelector(".odin");
+const titleRunes = document.querySelectorAll(".title");
+const keyButtons = document.querySelectorAll(".calculator-keys button");
 let screen = document.querySelector(".calculator-screen");
 let inputArray = [];
 let inputStr = "";
@@ -25,15 +27,19 @@ let inputStr = "";
 // const validInputRegex = new RegExp("(\\d+(\\.[0-9])?[+\\-*\\/^%])*(\\d+)", "gm");
 
 // toggle "power on" styles
-power.addEventListener("click", () => {
+powerButton.addEventListener("click", () => {
+  odin.classList.toggle("power-on");
   screen.classList.toggle("glow");
-  buttons.forEach(button => {
+  titleRunes.forEach(title => {
+    title.classList.toggle("neon");
+  });
+  keyButtons.forEach(button => {
     button.classList.toggle("flux");
   });
 });
 
-// loop buttons and add event listeners
-buttons.forEach(button => {
+// loop key buttons and add event listeners
+keyButtons.forEach(button => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
     //inputArray.push(button.value);

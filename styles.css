@@ -37,8 +37,11 @@ body {
 /* Page structure */
 header {
   height: 200px;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding-left: 40px; /* Find what is making this necessary */
 }
 .container {
   display: flex;
@@ -53,12 +56,20 @@ main {
   align-items: center;
 }
 
+/* Styles */
+.arrow-runes {
+  font-size: 7rem;
+  letter-spacing: 5.2rem;
+  color: #252525;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+  width: 447px;
+  text-align: right;
+}
 .odin {
   background: transparent center/cover url("images/odin.png") no-repeat;
   height: 100px;
   width: 100px;
-  opacity: 0.75;
-  margin: 20px auto;
+  margin-top: 8px;
 }
 
 .odin.power-on {
@@ -66,25 +77,32 @@ main {
 }
 
 .power-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 140px;
   height: 140px;
-  margin: 0 auto;
-  border: 3px groove #797979;
+  border: 6px solid #252525; /*#797979*/
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 0 rgba(255, 255, 255, 1), 0 1px 0 0 rgba(255, 255, 255, 0.75);
 }
 
 .power-button.power-on {
   /* Created with https://www.css-gradient.com */
   background: transparent;
-  background: -webkit-radial-gradient(center, #fed129, #ffffff00);
-  background: -moz-radial-gradient(center, #fed129, #ffffff00);
-  background: radial-gradient(circle at center, #fed129, transparent 70%);
-  /* border-color: #fed129; */
+  background: -webkit-radial-gradient(center, rgba(254, 209, 41, 0.75), #ffffff00);
+  background: -moz-radial-gradient(center, rgba(254, 209, 41, 0.75), #ffffff00);
+  background: radial-gradient(circle at center, rgba(254, 209, 41, 0.75), transparent 70%);
+  border-color: #28d7fe;
+}
+
+.power-button:hover {
+  border-color: #28d7fe;
 }
 
 .power-button:active {
-  border: 2px inset #797979;
+  border: 4px inset #28d7fe;
 }
 
 .title {
@@ -115,7 +133,6 @@ main {
   width: 360px;
   margin: 0 0 0 40px;
   height: 100%;
-
   background-image: linear-gradient(to bottom, transparent, transparent 50%, rgba(0, 0, 0, 0.2));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 0 rgba(255, 255, 255, 0.15), 0 1px 0 0 rgba(255, 255, 255, 0.15);
   border-radius: 2px;
@@ -127,26 +144,28 @@ main {
   line-height: 4rem;
   height: 80px;
   border: none;
-  background-color: #252525;
+  background-color: rgba(37, 37, 37, 0.75); /* #252525 75%*/
   color: #97928c;
   text-align: right;
   padding: 0 20px 0 20px;
   margin: 10px 10px 0 10px;
-  opacity: 0.75;
+  /* opacity: 0.75; */
   border: 2px inset #6e6e6e;
   box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.5);
 }
 
-.firey-magic-light {
-  /* Firey light text */
-  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fed128, 0 0 10vw #fed128, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
-  color: #fed128;
+.magic-bg {
   /* Magic light background */
   box-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
-  background-color: #28d7fe;
+  background-color: rgba(40, 215, 254, 0.75); /* #28d7fe */
 }
 
-.firey-light {
+.magic-txt {
+  text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
+  color: #28d7fe;
+}
+
+.firey-txt {
   /* Firey text */
   text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fed128, 0 0 10vw #fed128, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
   color: #fed128;

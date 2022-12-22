@@ -18,6 +18,7 @@ const divide = function (arr) {
 // get elements
 const powerButton = document.querySelector(".power-button");
 const odin = document.querySelector(".odin");
+const arrowRunes = document.querySelectorAll(".arrow-runes");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 let screen = document.querySelector(".calculator-screen");
@@ -27,9 +28,13 @@ let inputStr = "";
 powerButton.addEventListener("click", () => {
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");
-  screen.classList.toggle("firey-magic-light");
+  screen.classList.toggle("firey-txt");
+  screen.classList.toggle("magic-bg");
+  arrowRunes.forEach(arrow => {
+    arrow.classList.toggle("magic-txt");
+  });
   titleRunes.forEach(title => {
-    title.classList.toggle("firey-light");
+    title.classList.toggle("firey-txt");
   });
   keyButtons.forEach(button => {
     button.classList.toggle("flux");
@@ -72,6 +77,7 @@ function operate(inputStr) {
 }
 
 // non-PEMDAS math operation and evaluate functions
+// ref: https://www.toptal.com/designers/htmlarrows/math/
 function operation(a, operator, b) {
   a = Number(a);
   b = Number(b);

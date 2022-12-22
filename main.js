@@ -74,16 +74,17 @@ function toggleText(element) {
   switch (element.id) {
     case "col1":
       if (content === "ODINS") {
-        console.log("if content: " + content);
         return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;");
       } else {
-        console.log("else content: " + content);
         return (element.innerHTML = "ODINS");
       }
-
       break;
     case "col2":
-      // console.log("content: " + content);
+      if (content === "CALCU") {
+        return (element.innerHTML = "&#5837;&#5800;&#5850;&#5837;&#5794;");
+      } else {
+        return (element.innerHTML = "CALCU");
+      }
       break;
     case "col3":
       // console.log("content: " + content);

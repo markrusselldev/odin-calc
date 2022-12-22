@@ -35,7 +35,9 @@ powerButton.addEventListener("click", () => {
   });
   titleRunes.forEach(title => {
     title.classList.toggle("firey-txt");
+    toggleText(title);
   });
+
   keyButtons.forEach(button => {
     button.classList.toggle("flux");
   });
@@ -67,6 +69,37 @@ function display(value) {
   // console.log("displayValue " + displayValue);
 }
 
+function toggleText(element) {
+  const content = element.innerHTML;
+  switch (element.id) {
+    case "col1":
+      if (content.value !== "ODINS") {
+        element.textContent = "ODINS";
+        console.log("inside if content: " + content);
+      }
+      element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;";
+      console.log("outside if content: " + content);
+      break;
+    case "col2":
+      // console.log("content: " + content);
+      break;
+    case "col3":
+      // console.log("content: " + content);
+      break;
+    case "col4":
+      // console.log("content: " + content);
+      break;
+    case "col5":
+      // console.log("content: " + content);
+      break;
+    case "col6":
+      // console.log("content: " + content);
+      break;
+    default:
+      return;
+  }
+}
+
 // main functions
 function operate(inputStr) {
   const numsArray = inputStr.match(/[0-9]+/g);
@@ -76,8 +109,7 @@ function operate(inputStr) {
   return evaluate(numsArray, opsArray);
 }
 
-// non-PEMDAS math operation and evaluate functions
-// ref: https://www.toptal.com/designers/htmlarrows/math/
+// assign operators based on incomeing strings
 function operation(a, operator, b) {
   a = Number(a);
   b = Number(b);
@@ -91,7 +123,7 @@ function operation(a, operator, b) {
     case "/":
       if (b === 0) {
         // check if b is zero before dividing
-        alert("Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgard!");
+        alert("Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgaaard!");
         return;
       }
       return a / b;
@@ -101,6 +133,7 @@ function operation(a, operator, b) {
   }
 }
 
+// non-PEMDAS math evaluate function
 function evaluate(numsArray, opsArray) {
   // require numsArray to have exactly one item more than opsArray
   if (opsArray.length + 1 != numsArray.length) {

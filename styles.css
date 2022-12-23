@@ -233,7 +233,7 @@ button {
 }
 
 /* Key buttons hover state */
-.flux:hover {
+.magic-pulse:hover {
   text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
   color: #fed128;
 }
@@ -255,17 +255,17 @@ button:active {
 }
 
 /* Based on Neon Flux https://codepen.io/Trinca/pen/NrvpWa */
-.neon {
+.firey-pulse {
   color: #fb4264;
   text-shadow: 0 0 3vw #f40a35;
 }
 
-.flux {
+.magic-pulse {
   color: #426dfb;
   text-shadow: 0 0 3vw #2356ff;
 }
 
-.neon {
+.firey-pulse {
   animation: neon 5s ease infinite;
   -moz-animation: neon 5s ease infinite;
   -webkit-animation: neon 5s ease infinite;
@@ -283,14 +283,14 @@ button:active {
   }
 }
 
-.flux {
+.magic-pulse {
   animation: flux 5s linear infinite;
   -moz-animation: flux 5s linear infinite;
   -webkit-animation: flux 5s linear infinite;
   -o-animation: flux 5s linear infinite;
 }
 
-.flux:hover {
+.magic-pulse:hover {
   text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
   color: #fed128;
   animation: none;

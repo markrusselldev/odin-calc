@@ -52,13 +52,13 @@ powerButton.addEventListener("click", () => {
     toggleText(title);
   });
   keyButtons.forEach(button => {
-    button.classList.toggle("flux");
+    button.classList.toggle("magic-pulse");
   });
 });
 
 // loop key buttons and add event listeners
 keyButtons.forEach(button => {
-  // and for each one we add a 'click' listener based on className
+  // for each one we add a 'click' listener based on className
   switch (button.className) {
     case "all-clear":
       button.addEventListener("click", () => {

@@ -36,7 +36,7 @@ powerButton.addEventListener("click", () => {
   thunder.play();
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");
-  screen.classList.toggle("firey-txt");
+  screen.classList.toggle("golden-txt");
   screen.classList.toggle("magic-bg");
   headers.forEach(header => {
     header.classList.toggle("magic-txt");

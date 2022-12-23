@@ -173,7 +173,7 @@ main {
   background-color: rgba(37, 37, 37, 0.75); /* #252525 75%*/
   color: #97928c;
   text-align: right;
-  padding: 0 20px 0 20px;
+  padding: 0 10px;
   margin: 10px 10px 0 10px;
   /* opacity: 0.75; */
   border: 2px inset #6e6e6e;
@@ -197,6 +197,14 @@ main {
   color: #fed128;
 }
 
+.golden-txt {
+  /* Firey stroke */
+  color: #fed128;
+  -webkit-text-fill-color: #fed128; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fa1c16;
+}
+
 .calculator-keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -211,7 +219,6 @@ button {
 }
 
 /* buttons */
-
 button {
   height: 60px;
   border-radius: 2px;

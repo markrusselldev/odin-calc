@@ -28,6 +28,7 @@ let inputStr = "";
 
 // toggle "power on" styles
 powerButton.addEventListener("click", () => {
+  thunder.currentTime = 0; // rewind audio to the start each time
   thunder.play();
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");

@@ -77,7 +77,7 @@ keyButtons.forEach(button => {
       button.addEventListener("click", () => {
         impact.currentTime = 0; // rewind audio to the start each time
         impact.play();
-        // code here
+        screen.value = operate(inputStr);
       });
       break;
     default:
@@ -86,11 +86,10 @@ keyButtons.forEach(button => {
           alert("There shall be no more than thirteen characters, human. Hit equals, clear, backspace or just begone!");
           return;
         }
-        inputStr += button.value;
         whoosh.currentTime = 0; // rewind audio to the start each time
         whoosh.play();
+        inputStr += button.value;
         display(button.value);
-        // console.log("inputStr: " + inputStr);
       });
   } // end switch
 });
@@ -115,8 +114,6 @@ function display(value) {
   if (value === "*") displayValue = "\u00D7";
   if (value === "/") displayValue = "\u00F7";
   screen.value += displayValue;
-  // console.log("screen.value: " + screen.value);
-  // console.log("displayValue " + displayValue);
 }
 // Toggle Runic/English text
 function toggleText(element) {
@@ -187,8 +184,8 @@ function toggleText(element) {
 function operate(inputStr) {
   const numsArray = inputStr.match(/[0-9]+/g);
   const opsArray = inputStr.match(/[\/\+\-\*]+/g);
-  // console.log(numsArray);
-  // console.log(opsArray);
+  // Reset inputStr
+  inputStr = "";
   return evaluate(numsArray, opsArray);
 }
 
@@ -207,7 +204,7 @@ function operation(a, operator, b) {
       if (b === 0) {
         // check if b is zero before dividing
         alert("Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgaaard!");
-        return;
+        return "0"; // return "0" to reset screen
       }
       return a / b;
     default:
@@ -219,10 +216,11 @@ function operation(a, operator, b) {
 // non-PEMDAS math evaluate function
 function evaluate(numsArray, opsArray) {
   // require numsArray to have exactly one item more than opsArray
+  // !Array.isArray(numsArray) || !numsArray.length || !Array.isArray(opsArray) || !opsArray.length ||
   if (opsArray.length + 1 != numsArray.length) {
     alert("Don't you know how simple math works, mortal? Number, operator, number, operator, number, etc.");
-    console.log("Error: Array lengths mismatch");
-    return; // return if lengths aren't compatible
+    console.log("Error: Array lengths mismatch or one or both are empty");
+    return "0"; // return "0" to reset screen
   }
   // begin with the first number
   let resultTally = numsArray[0];
@@ -232,6 +230,5 @@ function evaluate(numsArray, opsArray) {
     resultTally = operation(resultTally, opsArray[index], numsArray[index + 1]);
   });
 
-  // console.log("Results: " + resultTally);
   return resultTally;
 }

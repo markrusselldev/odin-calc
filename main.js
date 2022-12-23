@@ -26,6 +26,8 @@ const thunder = new Audio("audio/distant-thunder.mp3");
 const lightning = new Audio("audio/lightning.mp3");
 const whoosh = new Audio("audio/whoosh.mp3");
 const impact = new Audio("audio/impact-thunder.mp3");
+const thrum = new Audio("audio/low-thrum.mp3");
+thrum.loop = true;
 // constants
 const powerOnMsg = "Have You Tried Turning It On, Mortal?\nDo You See That Big Round Thing At The Top?";
 const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Halls, Human. Hit Backspace, Clear Or Equals!";
@@ -39,6 +41,8 @@ let powerOn = false;
 powerButton.addEventListener("click", () => {
   thunder.currentTime = 0; // reset audio on each click
   thunder.play();
+  thrum.currentTime = 0; // reset audio on each click
+  thrum.play();
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");
   screen.classList.toggle("golden-txt");

@@ -18,7 +18,7 @@ const divide = function (arr) {
 // get elements
 const powerButton = document.querySelector(".power-button");
 const odin = document.querySelector(".odin");
-const arrowRunes = document.querySelectorAll(".arrow-runes");
+const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 let screen = document.querySelector(".calculator-screen");
@@ -30,9 +30,9 @@ powerButton.addEventListener("click", () => {
   powerButton.classList.toggle("power-on");
   screen.classList.toggle("firey-txt");
   screen.classList.toggle("magic-bg");
-  arrowRunes.forEach(arrow => {
-    arrow.classList.toggle("magic-txt");
-    toggleText(arrow);
+  headers.forEach(header => {
+    header.classList.toggle("magic-txt");
+    toggleText(header);
   });
   titleRunes.forEach(title => {
     title.classList.toggle("firey-txt");

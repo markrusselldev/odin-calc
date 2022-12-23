@@ -12,6 +12,10 @@ html {
   box-sizing: inherit;
 }
 
+* {
+  border: 1px solid red;
+}
+
 @font-face {
   font-family: NorseBold;
   src: url(fonts/NorseBold-2Kge.otf);
@@ -35,6 +39,14 @@ body {
 }
 
 /* Page structure */
+#header-center {
+  width: 360px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 header {
   height: 200px;
   width: 100%;

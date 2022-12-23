@@ -44,7 +44,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: end;
-  padding-right: 5px;
+}
+
+#header-right {
+  padding-right: 14px;
 }
 
 #header-center {

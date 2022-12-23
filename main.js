@@ -78,10 +78,10 @@ function toggleText(element) {
   const content = element.innerHTML;
   switch (element.id) {
     case "header-left":
-      if (content === "ODIN") {
+      if (content === "0DIN") {
         return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;");
       } else {
-        return (element.innerHTML = "ODIN");
+        return (element.innerHTML = "0DIN");
       }
       break;
     case "header-right":
@@ -92,10 +92,10 @@ function toggleText(element) {
       }
       break;
     case "col1":
-      if (content === "ODINS") {
+      if (content === "0DINS") {
         return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;");
       } else {
-        return (element.innerHTML = "ODINS");
+        return (element.innerHTML = "0DINS");
       }
       break;
     case "col2":

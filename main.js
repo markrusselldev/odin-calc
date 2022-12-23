@@ -37,7 +37,7 @@ let powerOn = false;
 
 // toggle "power on" styles
 powerButton.addEventListener("click", () => {
-  thunder.currentTime = 0; // rewind audio to the start each time
+  thunder.currentTime = 0; // reset audio on each click
   thunder.play();
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");
@@ -51,7 +51,6 @@ powerButton.addEventListener("click", () => {
     title.classList.toggle("firey-txt");
     toggleText(title);
   });
-
   keyButtons.forEach(button => {
     button.classList.toggle("flux");
   });
@@ -59,7 +58,7 @@ powerButton.addEventListener("click", () => {
 
 // loop key buttons and add event listeners
 keyButtons.forEach(button => {
-  // and for each one we add a 'click' listener
+  // and for each one we add a 'click' listener based on className
   switch (button.className) {
     case "all-clear":
       button.addEventListener("click", () => {
@@ -67,7 +66,7 @@ keyButtons.forEach(button => {
           alert(powerOnMsg);
           return;
         }
-        impact.currentTime = 0; // rewind audio to the start each time
+        impact.currentTime = 0; // reset audio on each click
         impact.play();
         display("clear");
         inputStr = "";
@@ -79,7 +78,7 @@ keyButtons.forEach(button => {
           alert(powerOnMsg);
           return;
         }
-        impact.currentTime = 0; // rewind audio to the start each time
+        impact.currentTime = 0; // reset audio on each click
         impact.play();
         display("backspace");
         inputStr.slice(0, -1);
@@ -91,7 +90,7 @@ keyButtons.forEach(button => {
           alert(powerOnMsg);
           return;
         }
-        impact.currentTime = 0; // rewind audio to the start each time
+        impact.currentTime = 0; // reset audio on each click
         impact.play();
         screen.value = operate(inputStr);
       });
@@ -106,7 +105,7 @@ keyButtons.forEach(button => {
           alert(lengthMsg);
           return;
         }
-        whoosh.currentTime = 0; // rewind audio to the start each time
+        whoosh.currentTime = 0; // reset audio on each click
         whoosh.play();
         inputStr += button.value;
         display(button.value);

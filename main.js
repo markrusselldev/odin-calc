@@ -55,17 +55,56 @@ powerButton.addEventListener("click", () => {
 // loop key buttons and add event listeners
 keyButtons.forEach(button => {
   // and for each one we add a 'click' listener
-  button.addEventListener("click", () => {
-    inputStr += button.value;
-    whoosh.currentTime = 0; // rewind audio to the start each time
-    whoosh.play();
-    display(button.value);
-    // console.log("inputStr: " + inputStr);
-  });
+  // console.log(button.className);
+  switch (button.className) {
+    case "all-clear":
+      button.addEventListener("click", () => {
+        impact.currentTime = 0; // rewind audio to the start each time
+        impact.play();
+        display("clear");
+        inputStr = "";
+      });
+      break;
+    case "backspace":
+      button.addEventListener("click", () => {
+        impact.currentTime = 0; // rewind audio to the start each time
+        impact.play();
+        display("backspace");
+        inputStr.slice(0, -1);
+      });
+      break;
+    case "equal-sign":
+      button.addEventListener("click", () => {
+        impact.currentTime = 0; // rewind audio to the start each time
+        impact.play();
+        // code here
+      });
+      break;
+    default:
+      button.addEventListener("click", () => {
+        if (screen.value.length >= 13) {
+          alert("There shall be no more than thirteen characters, human. Hit equals, clear, backspace or just begone!");
+          return;
+        }
+        inputStr += button.value;
+        whoosh.currentTime = 0; // rewind audio to the start each time
+        whoosh.play();
+        display(button.value);
+        // console.log("inputStr: " + inputStr);
+      });
+  } // end switch
 });
 
 // display
 function display(value) {
+  if (value === "clear") {
+    screen.value = "";
+    return;
+  }
+  if (value == "backspace") {
+    screen.value = screen.value.slice(0, -1);
+    return;
+  }
   let displayValue = value;
   if (screen.value === "0") screen.value = "";
   // https://www.toptal.com/designers/htmlarrows/math/

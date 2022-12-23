@@ -44,7 +44,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: end;
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 #header-center {
@@ -78,7 +78,7 @@ main {
 
 /* Styles */
 .header {
-  font-size: 5rem;
+  font-size: 12rem;
   letter-spacing: 4.2rem;
   color: #252525;
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);

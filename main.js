@@ -32,6 +32,7 @@ powerButton.addEventListener("click", () => {
   screen.classList.toggle("magic-bg");
   arrowRunes.forEach(arrow => {
     arrow.classList.toggle("magic-txt");
+    toggleText(arrow);
   });
   titleRunes.forEach(title => {
     title.classList.toggle("firey-txt");
@@ -72,6 +73,14 @@ function display(value) {
 function toggleText(element) {
   const content = element.innerHTML;
   switch (element.id) {
+    case "header-left":
+    case "header-right":
+      if (content === "POWER") {
+        return (element.innerHTML = "&#5845;&#5806;&#5797;&#5826;&#5809;");
+      } else {
+        return (element.innerHTML = "POWER");
+      }
+      break;
     case "col1":
       if (content === "ODINS") {
         return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;");

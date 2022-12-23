@@ -27,9 +27,9 @@ const lightning = new Audio("audio/lightning.mp3");
 const whoosh = new Audio("audio/whoosh.mp3");
 const impact = new Audio("audio/impact-thunder.mp3");
 // constants
-const powerOnMsg = "Have you tried turning it on, genius?";
-const lengthMsg = "There shall be no more than thirteen characters, human. Hit equals, clear, backspace now.";
-const divideZeroMsg = "Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgaaard!";
+const powerOnMsg = "Have You Tried Turning It On, Mortal? Do You See That Big Round Thing At The Top?";
+const lengthMsg = "There Shall Be No More Than Thirteen Characters, Human. Hit Backspace, Clear Or Equals!";
+const divideZeroMsg = "Odin Frowns Upon Thy Feeble Attempt To Divide By Zero And Become A God. Begone, Spawn Of Midgaaard!";
 // variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";

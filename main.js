@@ -21,8 +21,12 @@ const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
-const thunder = new Audio("audio/mixkit-distant-thunder-explosion-1278.wav");
-const lightning = new Audio("audio/mixkit-explosion-hit-1704.wav");
+// audio files
+const thunder = new Audio("audio/distant-thunder.mp3");
+const lightning = new Audio("audio/lightning.mp3");
+const whoosh = new Audio("audio/whoosh.mp3");
+const impact = new Audio("audio/impact-thunder.mp3");
+// variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 
@@ -53,7 +57,8 @@ keyButtons.forEach(button => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
     inputStr += button.value;
-    thunder.play();
+    whoosh.currentTime = 0; // rewind audio to the start each time
+    whoosh.play();
     display(button.value);
     // console.log("inputStr: " + inputStr);
   });

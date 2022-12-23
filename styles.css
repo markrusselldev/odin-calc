@@ -1,4 +1,4 @@
-/* css reset */
+/* CSS Reset */
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -12,16 +12,12 @@ html {
   box-sizing: inherit;
 }
 
-/* * {
-  border: 1px solid red;
-} */
-
 @font-face {
   font-family: NorseBold;
   src: url(fonts/NorseBold-2Kge.otf);
 }
 
-/* Full page background image */
+/* Full Page Background Image */
 body {
   background-image: url("images/bg-stone3.jpg");
   /* Background image is centered vertically and horizontally at all times */
@@ -30,14 +26,15 @@ body {
   background-repeat: no-repeat;
   /* Background image is fixed in the viewport so that it doesn’t move when the content’s height is greater than the image’s height */
   background-attachment: fixed;
-  /* This is what makes the background image rescale based on the container’s size */
+  /* Background image will rescale based on the container’s size */
   background-size: cover;
-  /* Set a background color that will be displayed while the background image is loading */
+  /* Background color that will be displayed while the background image is loading */
   background-color: #464646;
+
   font-family: NorseBold, serif;
 }
 
-/* Page structure */
+/* Structure */
 #header-left,
 #header-right {
   display: flex;
@@ -104,14 +101,14 @@ main {
   justify-content: center;
   width: 140px;
   height: 140px;
-  border: 8px solid #252525; /*#797979*/
+  border: 8px solid #252525;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 0 rgba(255, 255, 255, 1), 0 1px 0 0 rgba(255, 255, 255, 0.75);
 }
 
-/* background gradient for odin */
 .power-button.power-on {
+  /* radial gradient bg for The Odin Project logo */
   background: transparent;
   background: -webkit-radial-gradient(center, rgba(254, 209, 41, 0.75), transparent 70%);
   background: -moz-radial-gradient(center, rgba(254, 209, 41, 0.75), transparent 70%);
@@ -135,25 +132,25 @@ main {
   font-size: 9rem;
   color: #252525;
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);
-  /* The following three styles are necessary to center the letters */
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
-/* Cross browser compliant vertical text */
+/* All Browser Compliant Vertical Text */
 .vertical-text {
   width: 0;
   word-break: break-all;
   white-space: pre-wrap;
 }
-/* Cross browser compliant vertical text v2 */
+/* All Browser Compliant Vertical Text v2 */
 /* .vertical-text {
   width: 0px;
   word-wrap: break-word;
   white-space: pre-wrap;
 } */
 
+/* Calculator */
 .calculator {
   border: 3px groove #7c7c7c;
   width: 360px;
@@ -175,34 +172,8 @@ main {
   text-align: right;
   padding: 0 10px;
   margin: 10px 10px 0 10px;
-  /* opacity: 0.75; */
   border: 2px inset #6e6e6e;
   box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.5);
-}
-
-.magic-bg {
-  /* Magic light background */
-  box-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
-  background-color: rgba(40, 215, 254, 0.75); /* #28d7fe */
-}
-
-.magic-txt {
-  text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
-  color: #28d7fe;
-}
-
-.firey-txt {
-  /* Firey text */
-  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fed128, 0 0 10vw #fed128, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
-  color: #fed128;
-}
-
-.golden-txt {
-  /* Firey stroke */
-  color: #fed128;
-  -webkit-text-fill-color: #fed128; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #fa1c16;
 }
 
 .calculator-keys {
@@ -218,7 +189,7 @@ button {
   font-family: NorseBold, serif;
 }
 
-/* buttons */
+/* Calculator Buttons */
 button {
   height: 60px;
   border-radius: 2px;
@@ -232,7 +203,6 @@ button {
   cursor: pointer;
 }
 
-/* Key buttons hover state */
 .magic-pulse:hover {
   text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
   color: #fed128;
@@ -254,6 +224,30 @@ button:active {
   font-size: 6rem;
 }
 
+/* Fire And Magic */
+.magic-bg {
+  box-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
+  background-color: rgba(40, 215, 254, 0.75); /* #28d7fe */
+}
+
+.magic-txt {
+  text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
+  color: #28d7fe;
+}
+
+.firey-txt {
+  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fed128, 0 0 10vw #fed128, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
+  color: #fed128;
+}
+
+.golden-txt {
+  /* firey stroke on gold */
+  color: #fed128;
+  -webkit-text-fill-color: #fed128; /* will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fa1c16;
+}
+
 /* Based on Neon Flux https://codepen.io/Trinca/pen/NrvpWa */
 .firey-pulse {
   color: #fb4264;
@@ -266,12 +260,12 @@ button:active {
 }
 
 .firey-pulse {
-  animation: neon 5s ease infinite;
-  -moz-animation: neon 5s ease infinite;
-  -webkit-animation: neon 5s ease infinite;
+  animation: firey-pulse 5s ease infinite;
+  -moz-animation: firey-pulse 5s ease infinite;
+  -webkit-animation: firey-pulse 5s ease infinite;
 }
 
-@keyframes neon {
+@keyframes firey-pulse {
   0%,
   100% {
     text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fed128, 0 0 0.4vw #fed128;
@@ -284,10 +278,10 @@ button:active {
 }
 
 .magic-pulse {
-  animation: flux 5s linear infinite;
-  -moz-animation: flux 5s linear infinite;
-  -webkit-animation: flux 5s linear infinite;
-  -o-animation: flux 5s linear infinite;
+  animation: magic-pulse 5s linear infinite;
+  -moz-animation: magic-pulse 5s linear infinite;
+  -webkit-animation: magic-pulse 5s linear infinite;
+  -o-animation: magic-pulse 5s linear infinite;
 }
 
 .magic-pulse:hover {
@@ -296,7 +290,7 @@ button:active {
   animation: none;
 }
 
-@keyframes flux {
+@keyframes magic-pulse {
   0%,
   100% {
     text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff, 0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe;
@@ -305,5 +299,5 @@ button:active {
   50% {
     text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw;
     color: #1d4953;
-  } /* old color #146c80 */
+  } /* alt color #146c80 */
 }

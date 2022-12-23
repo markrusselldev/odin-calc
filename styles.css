@@ -232,8 +232,8 @@ button {
   cursor: pointer;
 }
 
+/* Key buttons hover state */
 .flux:hover {
-  /* color: #337cac; */
   text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
   color: #fed128;
 }
@@ -243,33 +243,18 @@ button:active {
 }
 
 .operator {
-  /* color: #337cac; */
   font-size: 6rem;
   line-height: 5rem;
 }
 
-.all-clear {
-  /* border-color: #b0353a; */
-}
-
-.all-clear:hover {
-  /* background-color: #f17377; */
-}
-
 .equal-sign {
-  /* border-color: #337cac; */
   height: 100%;
   grid-row: 2 / 5;
   grid-column: 4 / 5;
   font-size: 6rem;
 }
 
-.equal-sign:hover {
-  /* background-color: #4e9ed4; */
-}
-
 /* Based on Neon Flux https://codepen.io/Trinca/pen/NrvpWa */
-
 .neon {
   color: #fb4264;
   text-shadow: 0 0 3vw #f40a35;

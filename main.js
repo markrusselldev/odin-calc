@@ -15,7 +15,7 @@ const divide = function (arr) {
   return arr.reduce((last, next) => last / next);
 };
 
-// get elements
+// elements
 const powerButton = document.querySelector(".power-button");
 const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
@@ -26,9 +26,14 @@ const thunder = new Audio("audio/distant-thunder.mp3");
 const lightning = new Audio("audio/lightning.mp3");
 const whoosh = new Audio("audio/whoosh.mp3");
 const impact = new Audio("audio/impact-thunder.mp3");
+// constants
+const powerOnMsg = "Have you tried turning it on, genius?";
+const lengthMsg = "There shall be no more than thirteen characters, human. Hit equals, clear, backspace now.";
+const divideZeroMsg = "Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgaaard!";
 // variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
+let powerOn = false;
 
 // toggle "power on" styles
 powerButton.addEventListener("click", () => {
@@ -55,10 +60,13 @@ powerButton.addEventListener("click", () => {
 // loop key buttons and add event listeners
 keyButtons.forEach(button => {
   // and for each one we add a 'click' listener
-  // console.log(button.className);
   switch (button.className) {
     case "all-clear":
       button.addEventListener("click", () => {
+        if (!powerOn) {
+          alert(powerOnMsg);
+          return;
+        }
         impact.currentTime = 0; // rewind audio to the start each time
         impact.play();
         display("clear");
@@ -67,6 +75,10 @@ keyButtons.forEach(button => {
       break;
     case "backspace":
       button.addEventListener("click", () => {
+        if (!powerOn) {
+          alert(powerOnMsg);
+          return;
+        }
         impact.currentTime = 0; // rewind audio to the start each time
         impact.play();
         display("backspace");
@@ -75,6 +87,10 @@ keyButtons.forEach(button => {
       break;
     case "equal-sign":
       button.addEventListener("click", () => {
+        if (!powerOn) {
+          alert(powerOnMsg);
+          return;
+        }
         impact.currentTime = 0; // rewind audio to the start each time
         impact.play();
         screen.value = operate(inputStr);
@@ -82,8 +98,12 @@ keyButtons.forEach(button => {
       break;
     default:
       button.addEventListener("click", () => {
+        if (!powerOn) {
+          alert(powerOnMsg);
+          return;
+        }
         if (screen.value.length >= 13) {
-          alert("There shall be no more than thirteen characters, human. Hit equals, clear, backspace or just begone!");
+          alert(lengthMsg);
           return;
         }
         whoosh.currentTime = 0; // rewind audio to the start each time
@@ -203,7 +223,7 @@ function operation(a, operator, b) {
     case "/":
       if (b === 0) {
         // check if b is zero before dividing
-        alert("Odin frowns upon thy feeble attempt to divide by zero. Begone, spawn of Midgaaard!");
+        alert(divideZeroMsg);
         return "0"; // return "0" to reset screen
       }
       return a / b;
@@ -232,3 +252,26 @@ function evaluate(numsArray, opsArray) {
 
   return resultTally;
 }
+
+// Mutation observer for .power-on class
+// based on: https://medium.com/@prasannavaidya/how-to-detect-changes-to-the-dom-elements-classes-using-mutationobserver-javascript-e8e8cf09cd85
+var elemToObserve = document.querySelector(".power-button");
+var prevClassState = elemToObserve.classList.contains("power-on");
+var observer = new MutationObserver(function (mutations) {
+  mutations.forEach(function (mutation) {
+    if (mutation.attributeName == "class") {
+      var currentClassState = mutation.target.classList.contains("power-on");
+      if (prevClassState !== currentClassState) {
+        prevClassState = currentClassState;
+        if (currentClassState) {
+          console.log("class added!");
+          powerOn = true;
+        } else {
+          console.log("class removed!");
+          powerOn = false;
+        }
+      }
+    }
+  });
+});
+observer.observe(elemToObserve, { attributes: true });

@@ -21,11 +21,14 @@ const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
+const thunder = new Audio("audio/mixkit-distant-thunder-explosion-1278.wav");
+const lightning = new Audio("audio/mixkit-explosion-hit-1704.wav");
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 
 // toggle "power on" styles
 powerButton.addEventListener("click", () => {
+  thunder.play();
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");
   screen.classList.toggle("firey-txt");
@@ -49,8 +52,9 @@ keyButtons.forEach(button => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
     inputStr += button.value;
+    thunder.play();
     display(button.value);
-    console.log("inputStr: " + inputStr);
+    // console.log("inputStr: " + inputStr);
   });
 });
 
@@ -74,11 +78,17 @@ function toggleText(element) {
   const content = element.innerHTML;
   switch (element.id) {
     case "header-left":
-    case "header-right":
-      if (content === "POWER") {
-        return (element.innerHTML = "&#5845;&#5806;&#5797;&#5826;&#5809;");
+      if (content === "ODIN") {
+        return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;");
       } else {
-        return (element.innerHTML = "POWER");
+        return (element.innerHTML = "ODIN");
+      }
+      break;
+    case "header-right":
+      if (content === "CALC") {
+        return (element.innerHTML = "&#5837;&#5800;&#5850;&#5837;");
+      } else {
+        return (element.innerHTML = "CALC");
       }
       break;
     case "col1":

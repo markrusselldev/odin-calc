@@ -28,6 +28,8 @@ const whoosh = new Audio("audio/whoosh.mp3");
 const impact = new Audio("audio/impact-thunder.mp3");
 const thrum = new Audio("audio/low-thrum.mp3");
 thrum.loop = true;
+const laugh = new Audio("audio/odin-laugh.mp3");
+
 // constants
 const powerOnMsg = "Have You Tried Turning It On, Mortal?\nDo You See That Big Round Thing At The Top?";
 const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Halls, Human. Hit Backspace, Clear Or Equals!";
@@ -42,7 +44,7 @@ powerButton.addEventListener("click", () => {
   thunder.currentTime = 0; // reset audio on each click
   thunder.play();
   thrum.currentTime = 0; // reset audio on each click
-  thrum.play();
+  toggleAudio(thrum);
   odin.classList.toggle("power-on");
   powerButton.classList.toggle("power-on");
   screen.classList.toggle("golden-txt");
@@ -96,6 +98,8 @@ keyButtons.forEach(button => {
         }
         impact.currentTime = 0; // reset audio on each click
         impact.play();
+        laugh.currentTime = 0;
+        laugh.play();
         screen.value = operate(inputStr);
       });
       break;
@@ -201,6 +205,10 @@ function toggleText(element) {
     default:
       return;
   }
+}
+
+function toggleAudio(audio) {
+  return audio.paused ? audio.play() : audio.pause();
 }
 
 // main functions

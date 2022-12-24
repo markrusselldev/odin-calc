@@ -15,5 +15,5 @@
 
 # End of https://www.toptal.com/developers/gitignore/api/linux
 
-# Ignore the ignore directory and everything in it 
-_ignore/**
+# Ignore any dir prefixed with a hypen and everything in it.
+-*/**

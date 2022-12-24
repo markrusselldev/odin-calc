@@ -140,6 +140,7 @@ function display(value) {
   if (value === "-") displayValue = "\u2212";
   if (value === "*") displayValue = "\u00D7";
   if (value === "/") displayValue = "\u00F7";
+
   screen.value += displayValue;
 }
 // Toggle Runic/English text
@@ -213,8 +214,19 @@ function toggleAudio(audio) {
 
 // main functions
 function operate(inputStr) {
-  const numsArray = inputStr.match(/[0-9]+/g);
+  // orig regex: [0-9]+
+  const numsArray = inputStr.match(/^\d{2}(\.\d{1})$/g);
   const opsArray = inputStr.match(/[\/\+\-\*]+/g);
+  console.log(numsArray);
+
+  // numsArray.forEach(num => {
+  //   let isAllowed = /^\d{2}(\.\d{1})$/.test(num);
+  //   if (!isAllowed) {
+  //     alert("One or more of thy numerals is disallowed, human. Enter only numbers in the correct format: 00.0 - " + num);
+  //     return;
+  //   }
+  // });
+
   // Reset inputStr
   inputStr = "";
   return evaluate(numsArray, opsArray);
@@ -246,8 +258,16 @@ function operation(a, operator, b) {
 
 // non-PEMDAS math evaluate function
 function evaluate(numsArray, opsArray) {
+  // check for missing or empty arrays
+  if (!Array.isArray(opsArray) || !opsArray.length) {
+    alert("no ops array");
+    return inputStr;
+  }
+  if (!Array.isArray(numsArray) || !numsArray.length) {
+    alert("no nums array");
+    return inputStr;
+  }
   // require numsArray to have exactly one item more than opsArray
-  // !Array.isArray(numsArray) || !numsArray.length || !Array.isArray(opsArray) || !opsArray.length ||
   if (opsArray.length + 1 != numsArray.length) {
     alert("Don't you know how simple math works, mortal? Number, operator, number, operator, number, etc.");
     console.log("Error: Array lengths mismatch or one or both are empty");

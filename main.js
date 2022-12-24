@@ -258,7 +258,7 @@ function evaluate(numsArray, opsArray) {
   // we only need the index
   opsArray.forEach(function (_, index) {
     // apply the operation to resultTally and the next number
-    resultTally = operation(resultTally, opsArray[index], numsArray[index + 1]);
+    resultTally = operation(resultTally, opsArray[index], numsArray[index + 1]).toFixed(1);
   });
 
   return resultTally;

@@ -1,4 +1,4 @@
-## [ODIN CALC]](https://markrusselldev.github.io/odin-calc)
+## [ODIN CALC](https://markrusselldev.github.io/odin-calc)
 
 A non-PEMDAS calculator for [The Odin Project](https://www.theodinproject.com).
 

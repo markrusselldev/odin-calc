@@ -117,11 +117,8 @@ keyButtons.forEach(button => {
         }
         whoosh.currentTime = 0; // reset audio on each click
         whoosh.play();
-        if (screen.value !== "0" || screen.value !== "") {
-          inputStr += screen.value + button.value;
-        }
-        inputStr += button.value;
         display(button.value);
+        inputStr += button.value;
       });
   } // end switch
 });
@@ -296,11 +293,6 @@ function evaluate(numsArray, opsArray) {
       .toFixed(1)
       .replace(/\.?0+$/, "");
   });
-
-  // Reset inputStr, numsArray and opsArray
-  inputStr = "";
-  numsArray = [];
-  opsArray = [];
 
   return resultTally;
 }

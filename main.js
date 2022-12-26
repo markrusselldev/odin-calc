@@ -1,8 +1,8 @@
-// unused math functions
+// Unused math functions from step 1
 const add = function (arr) {
   return arr.reduce((last, next) => last + next, 0);
 };
-// no initial value for subtract
+
 const subtract = function (arr) {
   return arr.reduce((last, next) => last - next);
 };
@@ -10,18 +10,18 @@ const subtract = function (arr) {
 const multiply = function (arr) {
   return arr.reduce((last, next) => last * next, 1);
 };
-// no initial value for divide
+
 const divide = function (arr) {
   return arr.reduce((last, next) => last / next);
 };
 
-// elements
+// Elements
 const powerButton = document.querySelector(".power-button");
 const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
-// audio files
+// Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
 const lightning = new Audio("audio/lightning.mp3");
 const whoosh = new Audio("audio/whoosh.mp3");
@@ -30,18 +30,19 @@ const thrum = new Audio("audio/low-thrum.mp3");
 thrum.loop = true;
 const laugh = new Audio("audio/odin-laugh.mp3");
 
-// constants
+// Constants
 const powerOnMsg = "Have You Tried Turning It On, Mortal?\nDo You See That Big Round Thing At The Top?";
 const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Halls, Human. Hit Backspace, Clear Or Equals!";
 const divideZeroMsg = "Odin Frowns Upon Thy Feeble Attempt To Divide By Zero And Become A God.\nBegone, Spawn Of Midgaaard!";
 const arrayMismatchMsg = "Don't You Know How Simple Math Works, Mortal? Number, Operator, Number, Etc.";
 const negativeNumMsg = "Don't Be So Negative, Human!\nNegative Numbers Are Not Allowed Here... Unless The Are Created By ODIN CALC, Of Course.";
-// variables
+const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Number Shall Be Allowed, Mortal. A Reset Be Upon Thee!";
+// Variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 let powerOn = false;
 
-// toggle "power on" styles
+// Toggle "power on" styles
 powerButton.addEventListener("click", () => {
   thunder.currentTime = 0; // reset audio on each click
   thunder.play();
@@ -64,9 +65,9 @@ powerButton.addEventListener("click", () => {
   });
 });
 
-// loop key buttons and add event listeners
+// Loop key buttons and add event listeners
 keyButtons.forEach(button => {
-  // for each one we add a 'click' listener based on className
+  // For each one we add a 'click' listener based on className
   switch (button.className) {
     case "all-clear":
       button.addEventListener("click", () => {
@@ -120,25 +121,26 @@ keyButtons.forEach(button => {
         display(button.value);
         inputStr += button.value;
       });
-  } // end switch
+  }
 });
 
-// display
+// Display
 function display(value) {
+  // All Clear
   if (value === "clear") {
     screen.value = "0";
     return;
   }
-
+  // Backspace
   if (value == "backspace") {
     screen.value = screen.value.slice(0, -1);
     return;
   }
-
+  // Remove the default zero before evaluating
   if (screen.value === "0") screen.value = "";
 
   // REF: https://www.toptal.com/designers/htmlarrows/math/
-  // javascript escape notation for a character in a quoted string is \uxxxx
+  // Javascript escape notation for a character in a quoted string is \uxxxx
   // where xxxx is four hexadecimal digits that specify the Unicode code number
   let displayValue = value;
   if (value === "+") displayValue = "\u002B";
@@ -146,6 +148,7 @@ function display(value) {
   if (value === "*") displayValue = "\u00D7";
   if (value === "/") displayValue = "\u00F7";
 
+  // Send displayValue to calculator screen
   screen.value += displayValue;
 }
 
@@ -214,37 +217,55 @@ function toggleText(element) {
   }
 }
 
+// Toggle audio samples
 function toggleAudio(audio) {
   return audio.paused ? audio.play() : audio.pause();
 }
 
-// calculator functions
+// Calculator functions
 function operate(inputStr) {
-  // Check for negative numbers
+  // Check for negative numbers, alert and reset
   const negativeNumRegex = new RegExp(/(?<!\d+)-\d+(\.\d+)|(?<!\d+)-\d+/, "gm");
   const hasNegative = negativeNumRegex.test(inputStr);
   if (hasNegative) {
     alert(negativeNumMsg);
-    return 0;
+    return 0; // reset the screen
   }
 
-  // REGEX: match positive integers and decimals to one place /\d+(\.\d{1})|(\d+)/gm
-  // REGEX: match positive integers and decimals, no limit on decimal place /\d+(\.\d+)|(\d+)/gm
-  // REGEX: match positive/negative integers and decimals, no limit on decimal place (limited to one place in output) /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
-  let numsArray = inputStr.match(/\d+(\.\d+)|(\d+)/gm);
+  // REGEX: (not used) match positive integers and decimals to one place /\d+(\.\d{1})|(\d+)/gm
+  // REGEX: (not used) match positive integers and decimals, no limit on decimal place /\d+(\.\d+)|(\d+)/gm
+  // REGEX: (not used) match positive/negative integers and decimals, no limit on decimal place (limited to one place in output) /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
+  // REGEX: (used) match positive integers and decimals, no limit on decimal place or number of decimals \d+(\.\d+)+|(\d+)
+  let numsArray = inputStr.match(/\d+(\.\d+)+|(\d+)/gm);
+
+  // Check for multiple decimal places in each number
+  const multiDecimalRegex = new RegExp(/(\..*){2,}/, "g");
+  let hasMultiDecimal = [];
+  numsArray.forEach(num => {
+    hasMultiDecimal.push(multiDecimalRegex.test(num));
+  });
+
+  // If we found multiple decimal places, alert and reset
+  if (hasMultiDecimal.includes(true)) {
+    alert(hasMultiDecimalMsg);
+    return 0; // reset the screen
+  }
 
   // REGEX: match allowed operators
   // let opsArray = inputStr.match(/[\/\+\-\*]+/gm);
 
-  // remove the numbers/decimals, make an array of what is left
-  let opsArray = inputStr.replace(/\d+(\.\d+)|(\d+)/gm, "").split("");
-  console.log("numsArray in operate(): " + numsArray);
-  console.log("opsArray in operate(): " + opsArray);
-  console.log("inputStr in operate(): " + inputStr);
+  // Remove the numbers/decimals, make an array of what is left
+  // NOTE: must use same regex as numsArray!
+  let opsArray = inputStr.replace(/\d+(\.\d+)+|(\d+)/gm, "").split("");
+
+  // Handy for testing
+  // console.log("numsArray in operate(): " + numsArray);
+  // console.log("opsArray in operate(): " + opsArray);
+  // console.log("inputStr in operate(): " + inputStr);
   return evaluate(numsArray, opsArray);
 }
 
-// assign operators based on incoming strings
+// Assign operators based on incoming strings
 function operation(a, operator, b) {
   a = Number(a);
   b = Number(b);
@@ -259,7 +280,7 @@ function operation(a, operator, b) {
       if (b === 0) {
         // check if b is zero before dividing
         alert(divideZeroMsg);
-        return "0"; // return "0" to reset screen
+        return 0; // reset the screen
       }
       return a / b;
     default:
@@ -268,34 +289,33 @@ function operation(a, operator, b) {
   }
 }
 
-// non-PEMDAS math evaluate function
+// Non-PEMDAS math evaluate function
 function evaluate(numsArray, opsArray) {
-  // check for missing or empty arrays
+  // Check for empty arrays
   if (!opsArray.length) {
-    alert("ops array empty");
-    return "0"; // return "0" to reset the screen
+    console.error("Error: opsArray is empty");
+    return 0; // reset the screen
   }
   if (!numsArray.length) {
-    alert("ops array empty" + numsArray);
-    return "0";
+    console.error("Error: numsArray is empty");
+    return 0;
   }
-  // require numsArray to have exactly one item more than opsArray
+  // Require numsArray to have exactly one item more than opsArray
   if (opsArray.length + 1 != numsArray.length) {
     alert(arrayMismatchMsg);
-    // console.log("Error: Array lengths mismatch or one or both are empty");
-    return "0";
+    // console.log("Error: Array lengths mismatch");
+    return 0;
   }
-  // begin with the first number
+  // Begin with the first number
   let resultTally = numsArray[0];
-  // we only need the index
+  // We only need the index
   opsArray.forEach(function (_, index) {
-    // apply the operation to resultTally and the next number
+    // Apply the operation to resultTally and the next number
     resultTally = operation(resultTally, opsArray[index], numsArray[index + 1])
-      // shorten to one decimal place, remove if zero
+      // Shorten to one decimal place, remove if zero
       .toFixed(1)
       .replace(/\.?0+$/, "");
   });
-
   return resultTally;
 }
 

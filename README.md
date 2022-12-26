@@ -7,7 +7,7 @@ A non-PEMDAS calculator for [The Odin Project](https://www.theodinproject.com).
 > they are entered. Do remember to turn it off when you are done, mortal. We
 > shant waste the power of the gods. -ODIN
 
-- **Allowed**: Decimals
+- **Allowed**: Integers, Decimals
 - **Disallowed**: Negative Numbers
 
 ### Features
@@ -15,7 +15,7 @@ A non-PEMDAS calculator for [The Odin Project](https://www.theodinproject.com).
 - Uses actual runes to spell out a hidden message (unless you read runes!).
 - The hidden message is revealed when the calculator is "turned on" and the letters magically change to English.
 - It lights up with the firey magic of ODIN and Asgard.
-- Awesome Audio: **warning** Having your audio enabled is recommended. But, you may regret it if it's too loud.
+- Awesome Audio: **Please Note**, enabling your audio is recommended. But, you may regret it if it's too loud.
 
 ### Unicode Rune Chart
 

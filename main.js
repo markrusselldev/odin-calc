@@ -34,6 +34,8 @@ const laugh = new Audio("audio/odin-laugh.mp3");
 const powerOnMsg = "Have You Tried Turning It On, Mortal?\nDo You See That Big Round Thing At The Top?";
 const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Halls, Human. Hit Backspace, Clear Or Equals!";
 const divideZeroMsg = "Odin Frowns Upon Thy Feeble Attempt To Divide By Zero And Become A God.\nBegone, Spawn Of Midgaaard!";
+const arrayMismatchMsg = "Don't You Know How Simple Math Works, Mortal? Number, Operator, Number, Etc.";
+const negativeNumMsg = "Don't Be So Negative, Human!\nNegative Numbers Are Not Allowed Here... Unless The Are Created By ODIN CALC, Of Course.";
 // variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
@@ -87,7 +89,7 @@ keyButtons.forEach(button => {
         impact.currentTime = 0; // reset audio on each click
         impact.play();
         display("backspace");
-        inputStr.slice(0, -1);
+        inputStr = inputStr.slice(0, -1);
       });
       break;
     case "equal-sign":
@@ -115,6 +117,9 @@ keyButtons.forEach(button => {
         }
         whoosh.currentTime = 0; // reset audio on each click
         whoosh.play();
+        if (screen.value !== "0" || screen.value !== "") {
+          inputStr += screen.value + button.value;
+        }
         inputStr += button.value;
         display(button.value);
       });
@@ -124,18 +129,20 @@ keyButtons.forEach(button => {
 // display
 function display(value) {
   if (value === "clear") {
-    screen.value = "";
+    screen.value = "0";
     return;
   }
+
   if (value == "backspace") {
     screen.value = screen.value.slice(0, -1);
     return;
   }
-  let displayValue = value;
+
   if (screen.value === "0") screen.value = "";
   // https://www.toptal.com/designers/htmlarrows/math/
   // javascript escape notation for a character in a quoted string is \uxxxx
   // where xxxx is four hexadecimal digits that specify the Unicode code number
+  let displayValue = value;
   if (value === "+") displayValue = "\u002B";
   if (value === "-") displayValue = "\u2212";
   if (value === "*") displayValue = "\u00D7";
@@ -214,25 +221,31 @@ function toggleAudio(audio) {
 
 // main functions
 function operate(inputStr) {
-  // orig regex: [0-9]+
-  const numsArray = inputStr.match(/^\d{2}(\.\d{1})$/g);
-  const opsArray = inputStr.match(/[\/\+\-\*]+/g);
-  console.log(numsArray);
+  // Check for negative numbers
+  const negativeNumRegex = new RegExp(/(?<!\d+)-\d+(\.\d+)|(?<!\d+)-\d+/, "gm");
+  const hasNegative = negativeNumRegex.test(inputStr);
+  if (hasNegative) {
+    alert(negativeNumMsg);
+    return 0;
+  }
 
-  // numsArray.forEach(num => {
-  //   let isAllowed = /^\d{2}(\.\d{1})$/.test(num);
-  //   if (!isAllowed) {
-  //     alert("One or more of thy numerals is disallowed, human. Enter only numbers in the correct format: 00.0 - " + num);
-  //     return;
-  //   }
-  // });
+  // match positive integers and decimals to one place /\d+(\.\d{1})|(\d+)/gm
+  // match positive integers and decimals, no limit on decimal place /\d+(\.\d+)|(\d+)/gm
+  // match positive/negative integers and decimals, no limit on decimal place (limited to one place in output) /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
+  let numsArray = inputStr.match(/\d+(\.\d+)|(\d+)/gm);
 
-  // Reset inputStr
-  inputStr = "";
+  // match allowed operators
+  // let opsArray = inputStr.match(/[\/\+\-\*]+/gm);
+
+  // remove the numbers/decimals, make an array of what is left
+  let opsArray = inputStr.replace(/\d+(\.\d+)|(\d+)/gm, "").split("");
+  console.log("numsArray in operate(): " + numsArray);
+  console.log("opsArray in operate(): " + opsArray);
+  console.log("inputStr in operate(): " + inputStr);
   return evaluate(numsArray, opsArray);
 }
 
-// assign operators based on incomeing strings
+// assign operators based on incoming strings
 function operation(a, operator, b) {
   a = Number(a);
   b = Number(b);
@@ -259,18 +272,18 @@ function operation(a, operator, b) {
 // non-PEMDAS math evaluate function
 function evaluate(numsArray, opsArray) {
   // check for missing or empty arrays
-  if (!Array.isArray(opsArray) || !opsArray.length) {
-    alert("no ops array");
-    return inputStr;
+  if (!opsArray.length) {
+    alert("ops array empty");
+    return "0"; // return "0" to reset screen
   }
-  if (!Array.isArray(numsArray) || !numsArray.length) {
-    alert("no nums array");
-    return inputStr;
+  if (!numsArray.length) {
+    alert("ops array empty" + numsArray);
+    return "0"; // return "0" to reset screen
   }
   // require numsArray to have exactly one item more than opsArray
   if (opsArray.length + 1 != numsArray.length) {
-    alert("Don't you know how simple math works, mortal? Number, operator, number, operator, number, etc.");
-    console.log("Error: Array lengths mismatch or one or both are empty");
+    alert(arrayMismatchMsg);
+    // console.log("Error: Array lengths mismatch or one or both are empty");
     return "0"; // return "0" to reset screen
   }
   // begin with the first number
@@ -278,8 +291,16 @@ function evaluate(numsArray, opsArray) {
   // we only need the index
   opsArray.forEach(function (_, index) {
     // apply the operation to resultTally and the next number
-    resultTally = operation(resultTally, opsArray[index], numsArray[index + 1]).toFixed(1);
+    resultTally = operation(resultTally, opsArray[index], numsArray[index + 1])
+      // shorten to one decimal place, remove if zero
+      .toFixed(1)
+      .replace(/\.?0+$/, "");
   });
+
+  // Reset inputStr, numsArray and opsArray
+  inputStr = "";
+  numsArray = [];
+  opsArray = [];
 
   return resultTally;
 }

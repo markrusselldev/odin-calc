@@ -1,4 +1,4 @@
-// math functions
+// unused math functions
 const add = function (arr) {
   return arr.reduce((last, next) => last + next, 0);
 };
@@ -136,7 +136,8 @@ function display(value) {
   }
 
   if (screen.value === "0") screen.value = "";
-  // https://www.toptal.com/designers/htmlarrows/math/
+
+  // REF: https://www.toptal.com/designers/htmlarrows/math/
   // javascript escape notation for a character in a quoted string is \uxxxx
   // where xxxx is four hexadecimal digits that specify the Unicode code number
   let displayValue = value;
@@ -147,6 +148,7 @@ function display(value) {
 
   screen.value += displayValue;
 }
+
 // Toggle Runic/English text
 function toggleText(element) {
   const content = element.innerHTML;
@@ -216,7 +218,7 @@ function toggleAudio(audio) {
   return audio.paused ? audio.play() : audio.pause();
 }
 
-// main functions
+// calculator functions
 function operate(inputStr) {
   // Check for negative numbers
   const negativeNumRegex = new RegExp(/(?<!\d+)-\d+(\.\d+)|(?<!\d+)-\d+/, "gm");
@@ -226,12 +228,12 @@ function operate(inputStr) {
     return 0;
   }
 
-  // match positive integers and decimals to one place /\d+(\.\d{1})|(\d+)/gm
-  // match positive integers and decimals, no limit on decimal place /\d+(\.\d+)|(\d+)/gm
-  // match positive/negative integers and decimals, no limit on decimal place (limited to one place in output) /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
+  // REGEX: match positive integers and decimals to one place /\d+(\.\d{1})|(\d+)/gm
+  // REGEX: match positive integers and decimals, no limit on decimal place /\d+(\.\d+)|(\d+)/gm
+  // REGEX: match positive/negative integers and decimals, no limit on decimal place (limited to one place in output) /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
   let numsArray = inputStr.match(/\d+(\.\d+)|(\d+)/gm);
 
-  // match allowed operators
+  // REGEX: match allowed operators
   // let opsArray = inputStr.match(/[\/\+\-\*]+/gm);
 
   // remove the numbers/decimals, make an array of what is left
@@ -271,17 +273,17 @@ function evaluate(numsArray, opsArray) {
   // check for missing or empty arrays
   if (!opsArray.length) {
     alert("ops array empty");
-    return "0"; // return "0" to reset screen
+    return "0"; // return "0" to reset the screen
   }
   if (!numsArray.length) {
     alert("ops array empty" + numsArray);
-    return "0"; // return "0" to reset screen
+    return "0";
   }
   // require numsArray to have exactly one item more than opsArray
   if (opsArray.length + 1 != numsArray.length) {
     alert(arrayMismatchMsg);
     // console.log("Error: Array lengths mismatch or one or both are empty");
-    return "0"; // return "0" to reset screen
+    return "0";
   }
   // begin with the first number
   let resultTally = numsArray[0];

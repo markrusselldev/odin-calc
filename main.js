@@ -40,19 +40,22 @@ const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Hall
 const divideZeroMsg = "Odin Frowns Upon Thy Feeble Attempt To Divide By Zero And Become A God.\nBegone, Spawn Of Midgaaard!";
 const arrayMismatchMsg = "Don't You Know How Simple Math Works, Mortal? Number, Operator, Number, Etc.";
 const negativeNumMsg = "Don't Be So Negative, Human!\nNegative Numbers Are Not Allowed Here... Unless The Are Created By ODIN CALC, Of Course.";
-const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Number Shall Be Allowed, Spawn Of Lodurr. A Reset Be Upon Thee!";
+const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Number Shall Be Allowed, Spawn Of Lodurr.\nA Reset Be Upon Thee!";
 const onlyOneMsg = "By Hoenir's Ghost! Uncheckth The Checkboxth Below If Thee Desiresth More Dethimals. But, Beware. There Shall Be Only One!!! (um, in each number)";
 // Variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 let powerOn = false;
 
+// Toggle #there-can-be-only-one styles
 onlyOne.addEventListener("click", () => {
   checkmark.classList.toggle("magic-bg");
   checkmarkTxt.classList.toggle("magic-txt");
+  // toggle disabled
+  decimalKey.disabled = true ? (decimalKey.disabled = false) : (decimalKey.disabled = true);
 });
 
-// Toggle "power on" styles
+// Toggle .power-on styles
 powerButton.addEventListener("click", () => {
   thunder.currentTime = 0; // reset audio on each click
   thunder.play();

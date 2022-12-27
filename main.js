@@ -22,7 +22,7 @@ const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 const onlyOne = document.querySelector("#there-can-be-only-one");
-const checkmarkText = document.querySelector(".checkmark-text");
+const checkmarkTxt = document.querySelector(".checkmark-txt");
 const decimalKey = document.querySelector(".decimal");
 // Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
@@ -47,7 +47,7 @@ let inputStr = "";
 let powerOn = false;
 
 onlyOne.addEventListener("click", () => {
-  checkmarkText.classList.toggle("magic-txt");
+  checkmarkTxt.classList.toggle("magic-txt");
 });
 
 // Toggle "power on" styles

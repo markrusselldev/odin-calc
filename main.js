@@ -22,6 +22,7 @@ const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 const onlyOne = document.querySelector("#there-can-be-only-one");
+const checkmarkText = document.querySelector(".checkmark-text");
 const decimalKey = document.querySelector(".decimal");
 // Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
@@ -45,14 +46,9 @@ let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 let powerOn = false;
 
-// onlyOne.addEventListener("click", () => {
-//   console.log("disabled: " + decimalKey.disabled);
-//   if (decimalKey.disabled == true) {
-//     console.log(decimalKey.disabled);
-//     alert("only one, checked message");
-//   }
-//   console.log("checked: " + onlyOne.checked);
-// });
+onlyOne.addEventListener("click", () => {
+  checkmarkText.classList.toggle("magic-txt");
+});
 
 // Toggle "power on" styles
 powerButton.addEventListener("click", () => {

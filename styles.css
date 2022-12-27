@@ -228,13 +228,6 @@ button:active {
   cursor: not-allowed;
 }
 
-.checkmark-txt {
-  position: relative;
-  margin-left: 30px;
-  color: #252525;
-  text-shadow: 0 1px rgba(255, 255, 255, 0.7);
-}
-
 /* Custom checkbox
  *  REF: https://www.w3schools.com/howto/howto_css_custom_checkbox.asp 
  */
@@ -269,20 +262,26 @@ button:active {
   left: 0;
   height: 24px;
   width: 24px;
-  background-color: transparent;
   border: 3px groove #797979;
   background-image: linear-gradient(to bottom, transparent, transparent 50%, rgba(0, 0, 0, 0.04));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 0 rgba(255, 255, 255, 0.15), 0 1px 0 0 rgba(255, 255, 255, 0.15);
 }
 
-/* On mouse-over, add a grey background color */
-.custom-checkbox-container:hover input ~ .checkmark {
-  background-color: rgba(0, 0, 0, 0.05);
+.checkmark-txt {
+  position: relative;
+  margin-left: 30px;
+  color: #1e1e1e;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+}
+
+/* On mouse-over, show checkmark */
+.custom-checkbox-container:hover input ~ .checkmark:after {
+  display: block;
 }
 
 /* When the checkbox is checked, add a blue background */
 .custom-checkbox-container input:checked ~ .checkmark {
-  background-color: transparent;
+  background-color: rgba(40, 215, 254, 0.75);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -303,7 +302,7 @@ button:active {
   top: 3px;
   width: 5px;
   height: 10px;
-  border: solid #bbb;
+  border: solid #fed128; /* check color */
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

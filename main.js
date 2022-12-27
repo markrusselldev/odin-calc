@@ -22,6 +22,7 @@ const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 const onlyOne = document.querySelector("#there-can-be-only-one");
+const checkmark = document.querySelector(".checkmark");
 const checkmarkTxt = document.querySelector(".checkmark-txt");
 const decimalKey = document.querySelector(".decimal");
 // Audio Files
@@ -47,6 +48,7 @@ let inputStr = "";
 let powerOn = false;
 
 onlyOne.addEventListener("click", () => {
+  checkmark.classList.toggle("magic-bg");
   checkmarkTxt.classList.toggle("magic-txt");
 });
 

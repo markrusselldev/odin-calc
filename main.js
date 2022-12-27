@@ -399,7 +399,7 @@ window.addEventListener("keydown", e => {
     e.preventDefault();
   }
   // Check for allowed characters
-  if (e.key.match(/^(\d|\+|\-|\*|\/|\.)$/)) {
+  if (e.key.match(/^(\d|\+|\-|\*|\/|\.|Delete|Backspace)$/)) {
     display(e);
     inputStr += e.key;
   }

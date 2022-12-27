@@ -172,27 +172,40 @@ keyButtons.forEach(button => {
 
 // Display
 function display(value) {
+  console.log(Object.prototype.toString.call(value));
+
   // All Clear
-  if (value === "clear") {
+  if (value === "clear" || value.key === "Delete") {
     screen.value = "0";
     return;
   }
   // Backspace
-  if (value == "backspace") {
+  if (value === "backspace" || value.key === "Backspace") {
     screen.value = screen.value.slice(0, -1);
     return;
   }
   // Remove the default zero before evaluating
   if (screen.value === "0") screen.value = "";
 
+  let displayValue = "";
+  // Check for keyboard input
+  if (value instanceof KeyboardEvent) {
+    // Check for allowed characters
+    if (value.key.match(/^(\d|\+|\-|\*|\/|\.)$/)) {
+      //console.log(value.key);
+      displayValue = value.key;
+    }
+  } else {
+    displayValue = value;
+  }
+
   // REF: https://www.toptal.com/designers/htmlarrows/math/
   // Javascript escape notation for a character in a quoted string is \uxxxx
   // where xxxx is four hexadecimal digits that specify the Unicode code number
-  let displayValue = value;
-  if (value === "+") displayValue = "\u002B";
-  if (value === "-") displayValue = "\u2212";
-  if (value === "*") displayValue = "\u00D7";
-  if (value === "/") displayValue = "\u00F7";
+  if (displayValue === "+") displayValue = "\u002B";
+  if (displayValue === "-") displayValue = "\u2212";
+  if (displayValue === "*") displayValue = "\u00D7";
+  if (displayValue === "/") displayValue = "\u00F7";
 
   // Send displayValue to calculator screen
   screen.value += displayValue;
@@ -278,10 +291,15 @@ function operate(inputStr) {
     return 0; // reset the screen
   }
 
-  // REGEX: (not used) match positive integers and decimals to one place /\d+(\.\d{1})|(\d+)/gm
-  // REGEX: (not used) match positive integers and decimals, no limit on decimal place /\d+(\.\d+)|(\d+)/gm
-  // REGEX: (not used) match positive/negative integers and decimals, no limit on decimal place (limited to one place in output) /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
-  // REGEX: (used) match positive integers and decimals, no limit on decimal place or number of decimals \d+(\.\d+)+|(\d+)
+  // REGEX: (not used) match positive integers and decimals to one place.
+  // /\d+(\.\d{1})|(\d+)/gm
+  // REGEX: (not used) match positive integers and decimals, no limit on decimal
+  // place. /\d+(\.\d+)|(\d+)/gm
+  // REGEX: (not used) match positive/negative integers and decimals, no limit
+  // on decimal place (limited to one place in output)
+  // /(?<!\d+)-?\d+(\.\d+)|(?<!\d+)-?\d+/gm
+  // REGEX: (used) match positive integers and decimals, no limit on decimal
+  // place or number of decimals (limited to one place in output) \d+(\.\d+)+|(\d+)
   let numsArray = inputStr.match(/\d+(\.\d+)+|(\d+)/gm);
 
   // Check for multiple decimal places in each number
@@ -365,8 +383,38 @@ function evaluate(numsArray, opsArray) {
   return resultTally;
 }
 
+// Keyboard input event listener
+window.addEventListener("keydown", e => {
+  if (!powerOn) {
+    alert(powerOnMsg);
+    return;
+  }
+  if (screen.value.length >= 13) {
+    alert(lengthMsg);
+    return;
+  }
+  // slash = 191, ctrl = 17, shift = 16
+  // REF: https://www.toptal.com/developers/keycode
+  if (e.shiftKey || e.code == 191 || e.code == 17) {
+    e.preventDefault();
+  }
+  // Check for allowed characters
+  if (e.key.match(/^(\d|\+|\-|\*|\/|\.)$/)) {
+    display(e);
+    inputStr += e.key;
+  }
+
+  if (e.key === "Enter") {
+    impact.currentTime = 0; // reset audio on each click
+    impact.play();
+    laugh.currentTime = 0;
+    laugh.play();
+    screen.value = operate(inputStr);
+  }
+});
+
 // Mutation observer for .power-on class
-// based on: https://medium.com/@prasannavaidya/how-to-detect-changes-to-the-dom-elements-classes-using-mutationobserver-javascript-e8e8cf09cd85
+// REF: https://medium.com/@prasannavaidya/how-to-detect-changes-to-the-dom-elements-classes-using-mutationobserver-javascript-e8e8cf09cd85
 var elemToObserve = document.querySelector(".power-button");
 var prevClassState = elemToObserve.classList.contains("power-on");
 var observer = new MutationObserver(function (mutations) {

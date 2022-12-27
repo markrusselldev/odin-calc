@@ -21,6 +21,7 @@ const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
+const onlyOne = document.querySelector("#there-can-be-only-one");
 const decimalKey = document.querySelector(".decimal");
 // Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
@@ -42,6 +43,15 @@ const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Numbe
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 let powerOn = false;
+
+onlyOne.addEventListener("click", () => {
+  console.log(decimalKey.disabled);
+  if (decimalKey.disabled == true) {
+    console.log(decimalKey.disabled);
+    alert("only one, checked message");
+  }
+  console.log(onlyOne.checked);
+});
 
 // Toggle "power on" styles
 powerButton.addEventListener("click", () => {
@@ -121,7 +131,10 @@ keyButtons.forEach(button => {
         whoosh.play();
         display(button.value);
         inputStr += button.value;
-        decimalKey.disabled = true; // disable decimal after one click
+        // if "onlyOne" is checked
+        if (onlyOne.checked) {
+          decimalKey.disabled = true; // disable decimal after one click
+        }
       });
       break;
     default:

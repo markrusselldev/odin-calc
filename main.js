@@ -21,6 +21,7 @@ const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
 const titleRunes = document.querySelectorAll(".title");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
+const decimalKey = document.querySelector(".decimal");
 // Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
 const lightning = new Audio("audio/lightning.mp3");
@@ -104,6 +105,23 @@ keyButtons.forEach(button => {
         laugh.currentTime = 0;
         laugh.play();
         screen.value = operate(inputStr);
+      });
+      break;
+    case "decimal":
+      button.addEventListener("click", () => {
+        if (!powerOn) {
+          alert(powerOnMsg);
+          return;
+        }
+        if (screen.value.length >= 13) {
+          alert(lengthMsg);
+          return;
+        }
+        whoosh.currentTime = 0; // reset audio on each click
+        whoosh.play();
+        display(button.value);
+        inputStr += button.value;
+        decimalKey.disabled = true; // disable decimal after one click
       });
       break;
     default:
@@ -254,7 +272,7 @@ function operate(inputStr) {
   // REGEX: match allowed operators
   // let opsArray = inputStr.match(/[\/\+\-\*]+/gm);
 
-  // Remove the numbers/decimals, make an array of what is left
+  // Remove the integers and decimals, make an array of what is left
   // NOTE: must use same regex as numsArray!
   let opsArray = inputStr.replace(/\d+(\.\d+)+|(\d+)/gm, "").split("");
 

@@ -398,9 +398,12 @@ window.addEventListener("keydown", e => {
   if (e.shiftKey || e.code == 191 || e.code == 17) {
     e.preventDefault();
   }
-  // Check for allowed characters
+  // Send allowed characters to display
   if (e.key.match(/^(\d|\+|\-|\*|\/|\.|Delete|Backspace)$/)) {
     display(e);
+  }
+  // Add allowed characters to inputStr
+  if (e.key.match(/^(\d|\+|\-|\*|\/|\.)$/)) {
     inputStr += e.key;
   }
 

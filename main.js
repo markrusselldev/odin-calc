@@ -33,25 +33,26 @@ thrum.loop = true;
 const laugh = new Audio("audio/odin-laugh.mp3");
 
 // Constants
-const powerOnMsg = "Have You Tried Turning It On, Mortal?\nDo You See That Big Round Thing At The Top?";
+const powerOnMsg = "Great ODIN's Beard! Have You Tried Turning It On, Mortal?\nYou See That Big Round Thing At The Top?";
 const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Halls, Human. Hit Backspace, Clear Or Equals!";
 const divideZeroMsg = "Odin Frowns Upon Thy Feeble Attempt To Divide By Zero And Become A God.\nBegone, Spawn Of Midgaaard!";
 const arrayMismatchMsg = "Don't You Know How Simple Math Works, Mortal? Number, Operator, Number, Etc.";
 const negativeNumMsg = "Don't Be So Negative, Human!\nNegative Numbers Are Not Allowed Here... Unless The Are Created By ODIN CALC, Of Course.";
-const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Number Shall Be Allowed, Mortal. A Reset Be Upon Thee!";
+const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Number Shall Be Allowed, Spawn Of Lodurr. A Reset Be Upon Thee!";
+const onlyOneMsg = "By Hoenir's Ghost! Uncheckth The Checkboxth Below If Thee Desiresth More Dethimals. But, Beware. There Shall Be Only One!!! (um, in each number)";
 // Variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";
 let powerOn = false;
 
-onlyOne.addEventListener("click", () => {
-  console.log(decimalKey.disabled);
-  if (decimalKey.disabled == true) {
-    console.log(decimalKey.disabled);
-    alert("only one, checked message");
-  }
-  console.log(onlyOne.checked);
-});
+// onlyOne.addEventListener("click", () => {
+//   console.log("disabled: " + decimalKey.disabled);
+//   if (decimalKey.disabled == true) {
+//     console.log(decimalKey.disabled);
+//     alert("only one, checked message");
+//   }
+//   console.log("checked: " + onlyOne.checked);
+// });
 
 // Toggle "power on" styles
 powerButton.addEventListener("click", () => {
@@ -127,14 +128,23 @@ keyButtons.forEach(button => {
           alert(lengthMsg);
           return;
         }
-        whoosh.currentTime = 0; // reset audio on each click
-        whoosh.play();
-        display(button.value);
-        inputStr += button.value;
+
         // if "onlyOne" is checked
         if (onlyOne.checked) {
           decimalKey.disabled = true; // disable decimal after one click
         }
+
+        // console.log("disabled: " + decimalKey.disabled);
+        // if (screen.value.includes(".") && decimalKey.disabled == true) {
+        //   console.log("trying to get here");
+        //   //alert(onlyOneMsg);
+        // }
+        // console.log("checked: " + onlyOne.checked);
+
+        whoosh.currentTime = 0; // reset audio on each click
+        whoosh.play();
+        display(button.value);
+        inputStr += button.value;
       });
       break;
     default:

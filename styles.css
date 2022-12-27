@@ -226,7 +226,6 @@ button:active {
 
 .decimal:disabled {
   cursor: not-allowed;
-  color: #252525;
 }
 
 /* Fire And Magic */

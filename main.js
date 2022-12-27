@@ -134,6 +134,10 @@ keyButtons.forEach(button => {
           decimalKey.disabled = true; // disable decimal after one click
         }
 
+        if (button.disabled) {
+          button.classList.remove("magic-pulse");
+        }
+
         // console.log("disabled: " + decimalKey.disabled);
         // if (screen.value.includes(".") && decimalKey.disabled == true) {
         //   console.log("trying to get here");

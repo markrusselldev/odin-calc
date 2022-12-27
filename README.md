@@ -7,8 +7,8 @@ A non-PEMDAS calculator for [The Odin Project](https://www.theodinproject.com).
 > they are entered. Do remember to turn it off when you are done, mortal. We
 > shant waste the power of the gods. -ODIN
 
-- **Allowed**: Integers, Decimals(output rounded to one decimal place, e.g. 00.0)
-- **Disallowed**: Negative Numbers, More than one decimal
+- **Allowed**: Integers, Decimals (output is rounded to one decimal place, e.g. 000.0)
+- **Disallowed**: Negative Numbers, More than one decimal per number (or choose to restrict to only one decimal per calculation)
 
 ### Features
 

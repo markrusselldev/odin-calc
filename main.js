@@ -26,6 +26,7 @@ const checkmark = document.querySelector(".checkmark");
 const checkmarkTxt = document.querySelector(".checkmark-txt");
 const decimalKey = document.querySelector(".decimal");
 const creditsLinks = document.querySelectorAll(".credits a");
+const appName = document.querySelector(".app-name");
 // Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
 const lightning = new Audio("audio/lightning.mp3");
@@ -80,6 +81,7 @@ powerButton.addEventListener("click", () => {
   creditsLinks.forEach(link => {
     link.classList.toggle("firey-txt");
   });
+  appName.classList.toggle("magic-txt");
 });
 
 // Loop key buttons and add event listeners

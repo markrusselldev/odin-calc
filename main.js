@@ -25,6 +25,7 @@ const onlyOne = document.querySelector("#there-can-be-only-one");
 const checkmark = document.querySelector(".checkmark");
 const checkmarkTxt = document.querySelector(".checkmark-txt");
 const decimalKey = document.querySelector(".decimal");
+const creditsLinks = document.querySelectorAll(".credits a");
 // Audio Files
 const thunder = new Audio("audio/distant-thunder.mp3");
 const lightning = new Audio("audio/lightning.mp3");
@@ -75,6 +76,9 @@ powerButton.addEventListener("click", () => {
   });
   keyButtons.forEach(button => {
     button.classList.toggle("magic-pulse");
+  });
+  creditsLinks.forEach(link => {
+    link.classList.toggle("firey-txt");
   });
 });
 

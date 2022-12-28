@@ -84,47 +84,29 @@ footer {
   width: 100%;
   text-align: center;
   font-size: 2.1rem;
-  color: #eaeaea;
-  border-top: 3px groove #252525;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.7);
+  color: #393939;
+  border-top: 3px groove #393939;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.6);
   background-color: rgba(0, 0, 0, 0.75);
-  padding: 20px 40px;
+  padding: 30px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.app-logo {
-  display: flex;
-  align-items: center;
+.app-name {
   font-size: 4.7rem;
 }
 
-.app-logo img {
-  height: 40px;
-}
-
-.copyright {
-
-}
-
-.break {
-  flex-basis: 100%;
-  height: 0;
-}
-/* footer * {
-  display: inline;
-} */
-
-footer li {
-  margin: 20px;
-}
-
-footer a,
-footer li a {
-  color: #fed128;
+footer a {
+  color: #4d4d4d;
   text-decoration: none;
+}
+
+footer a:hover {
+  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
+  color: #fed128;
 }
 
 /* Styles */

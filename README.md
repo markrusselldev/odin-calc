@@ -53,7 +53,8 @@ Steps:
 
 #### Design 2
 
-![Design 2, Mobile First](/screenshots/odin-calc-v2-off.png?raw=true)
+![Design 2, Mobile First "Off"](/screenshots/odin-calc-v2-off.png?raw=true "Off")
+![Design 2, Mobile First "On"](/screenshots/odin-calc-v2.png?raw=true)
 
 ### Unicode Rune Chart
 

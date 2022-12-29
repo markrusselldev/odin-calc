@@ -17,6 +17,10 @@ html {
   src: url(fonts/NorseBold-2Kge.otf);
 }
 
+/* * {
+  border: 1px solid blueviolet;
+} */
+
 /* Full Page Background Image */
 body {
   background-image: url("images/bg-stone3.jpg");
@@ -32,18 +36,32 @@ body {
   background-color: #464646;
 
   font-family: NorseBold, serif;
+  width: 100%;
+
 }
 
 /* Structure */
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
 #header-left,
 #header-right {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
 }
 
 #header-right {
-  padding-right: 20px;
+  /* padding-top: 3vh; */
 }
 
 #header-center {
@@ -51,78 +69,66 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 40px;
+  margin: 0 1.6rem;
 }
 
 #header-center,
 .calculator {
-  width: 390px;
+  /* max-width: 390px; */
 }
 
 header {
-  width: 100%;
+  min-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 40px;
-}
-
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  padding-top: 4rem;
 }
 
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  flex-grow: 1;
+  min-width: 100%;
+}
+
+.main-top,
+.main-middle,
+.main-bottom {
+  display: flex;
 }
 
 footer {
-  width: 100%;
+  min-width: 100%;
+  margin: 0;
   text-align: center;
   font-size: 2.1rem;
   color: #393939;
   border-top: 3px groove #393939;
   text-shadow: 0 1px rgba(255, 255, 255, 0.6);
   background-color: rgba(0, 0, 0, 0.75);
-  padding: 30px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.app-name {
-  font-size: 4.7rem;
-}
-
-footer a {
-  color: #4d4d4d;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
-  color: #fed128;
+  /* flex-wrap: wrap; */
 }
 
 /* Styles */
 .header {
-  font-size: 10rem;
+  /* font-size: 5rem;
   letter-spacing: 4.2rem;
   color: #252525;
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);
-  width: 360px;
-  text-align: center;
+  width: 33vw;
+  text-align: center; */
 }
 .odin {
   background: transparent center/cover url("images/odin.png") no-repeat;
-  height: 100px;
-  width: 100px;
-  margin-top: 8px;
+  height: 9rem;
+  width: 9rem;
+  margin-top: .8rem;
 }
 
 .odin.power-on {
@@ -133,9 +139,9 @@ footer a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 140px;
-  height: 140px;
-  border: 8px solid #252525;
+  width: 12rem;
+  height: 12rem;
+  border: 0.8rem solid #252525;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 1), inset 0 -1px 0 0 rgba(255, 255, 255, 1), 0 1px 0 0 rgba(255, 255, 255, 0.75);
@@ -160,10 +166,10 @@ footer a:hover {
   border: 4px inset #28d7fe;
 }
 
-.title {
-  margin: 0 40px;
-  padding: 20px;
-  font-size: 9rem;
+.runes {
+  margin: 0;
+  padding: 0;
+  font-size: 5rem;
   color: #252525;
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);
   display: flex;
@@ -171,11 +177,34 @@ footer a:hover {
   text-align: center;
 }
 
+#runes-top.runes {
+  letter-spacing: 4rem;
+  margin-right: -3.1rem;
+}
+
+#runes-bottom.runes {
+  letter-spacing: 3.1rem;
+  margin-right: -3.1rem;
+}
+
+#runes-right, #runes-left {
+  height: 50rem; /* same height as .calculator */
+}
+
+.power-button.power-on #runes-top.runes.firey-txt {
+  letter-spacing: 3rem;
+  background: blue;
+}
+
+
 /* All Browser Compliant Vertical Text */
 .vertical-text {
   width: 0;
   word-break: break-all;
   white-space: pre-wrap;
+  /* Center vertically */
+  display: flex;
+  align-items: center;
 }
 /* All Browser Compliant Vertical Text v2 */
 /* .vertical-text {
@@ -184,11 +213,32 @@ footer a:hover {
   white-space: pre-wrap;
 } */
 
+.app-name {
+  font-size: 4.7rem;
+  margin-left: 2vw;
+  padding: 1rem;
+}
+
+.copyright {
+  margin-right: 4vw;
+}
+
+footer a {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-shadow: 0 0 1vw #fa1c16, 0 0 3vw #fa1c16, 0 0 10vw #fa1c16, 0 0 10vw #fa1c16, 0 0 0.4vw #fed128;
+  color: #fed128;
+}
+
 /* Calculator */
 .calculator {
   border: 3px groove #7c7c7c;
-  margin: 0 40px;
-  height: 100%;
+  margin: 0 3rem;
+  width: 30rem;
+  height: 50rem;
   background-image: linear-gradient(to bottom, transparent, transparent 50%, rgba(0, 0, 0, 0.2));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 0 rgba(255, 255, 255, 0.15), 0 1px 0 0 rgba(255, 255, 255, 0.15);
   border-radius: 2px;
@@ -207,6 +257,8 @@ footer a:hover {
   margin: 10px 10px 0 10px;
   border: 2px inset #6e6e6e;
   box-shadow: inset 0 0 10px 3px rgba(0, 0, 0, 0.5);
+  overflow: scroll;
+  scrollbar
 }
 
 .calculator-keys {
@@ -214,7 +266,6 @@ footer a:hover {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
   padding: 10px;
-  opacity: 1;
 }
 
 .calculator-screen,
@@ -224,7 +275,8 @@ button {
 
 /* Calculator Buttons */
 button {
-  height: 60px;
+  width: 6rem;
+  height: 6rem;
   border-radius: 2px;
   border: 3px groove #797979;
   background-color: transparent;
@@ -271,7 +323,7 @@ button:active {
   position: relative;
   margin: 5px 10px 10px;
   cursor: pointer;
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   line-height: 2rem;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -302,7 +354,7 @@ button:active {
 
 .checkmark-txt {
   position: relative;
-  margin-left: 30px;
+  margin-left: 3rem;
   color: #1e1e1e;
   text-shadow: 0 1px rgba(255, 255, 255, 0.7);
 }

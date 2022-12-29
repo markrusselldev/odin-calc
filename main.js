@@ -19,7 +19,7 @@ const divide = function (arr) {
 const powerButton = document.querySelector(".power-button");
 const odin = document.querySelector(".odin");
 const headers = document.querySelectorAll(".header");
-const titleRunes = document.querySelectorAll(".title");
+const runes = document.querySelectorAll(".runes");
 const keyButtons = document.querySelectorAll(".calculator-keys button");
 const onlyOne = document.querySelector("#there-can-be-only-one");
 const checkmark = document.querySelector(".checkmark");
@@ -50,7 +50,12 @@ let inputStr = "";
 let powerOn = false;
 
 // Toggle #there-can-be-only-one styles
-onlyOne.addEventListener("click", () => {
+onlyOne.addEventListener("click", e => {
+  if (!powerOn) {
+    e.preventDefault(); // prevent check
+    alert(powerOnMsg);
+    return;
+  }
   checkmark.classList.toggle("magic-bg");
   checkmarkTxt.classList.toggle("magic-txt");
   // toggle disabled
@@ -71,9 +76,9 @@ powerButton.addEventListener("click", () => {
     header.classList.toggle("magic-txt");
     toggleText(header);
   });
-  titleRunes.forEach(title => {
-    title.classList.toggle("firey-txt");
-    toggleText(title);
+  runes.forEach(rune => {
+    rune.classList.toggle("firey-txt");
+    toggleText(rune);
   });
   keyButtons.forEach(button => {
     button.classList.toggle("magic-pulse");
@@ -82,6 +87,14 @@ powerButton.addEventListener("click", () => {
     link.classList.toggle("firey-txt");
   });
   appName.classList.toggle("magic-txt");
+  // If onlyOne is checked during power off, clear it
+  if (onlyOne.checked) {
+    onlyOne.checked = false;
+    checkmark.classList.toggle("magic-bg");
+    checkmarkTxt.classList.toggle("magic-txt");
+    // toggle disabled
+    decimalKey.disabled = true ? (decimalKey.disabled = false) : (decimalKey.disabled = true);
+  }
 });
 
 // Loop key buttons and add event listeners
@@ -235,46 +248,32 @@ function toggleText(element) {
         return (element.innerHTML = "CALC");
       }
       break;
-    case "col1":
-      if (content === "0DINS") {
-        return (element.innerHTML = "&#5806;&#5841;&#5825;&#5822;&#5835;");
+    case "runes-top":
+      if (content === "•0DIN'S") {
+        return (element.innerHTML = "&bull;&#5806;&#5841;&#5825;&#5822;&apos;&#5835;");
       } else {
-        return (element.innerHTML = "0DINS");
+        return (element.innerHTML = "&bull;0DIN'S");
       }
       break;
-    case "col2":
-      if (content === "CALCU") {
-        return (element.innerHTML = "&#5837;&#5800;&#5850;&#5837;&#5794;");
+    case "runes-right":
+      if (content === "CALCULATOR") {
+        return (element.innerHTML = "&#5837;&#5800;&#5850;&#5837;&#5794;&#5850;&#5800;&#5839;&#5806;&#5809;");
       } else {
-        return (element.innerHTML = "CALCU");
+        return (element.innerHTML = `CALCULATOR`);
       }
       break;
-    case "col3":
-      if (content === "LATOR") {
-        return (element.innerHTML = "&#5850;&#5800;&#5839;&#5806;&#5809;");
+    case "runes-left":
+      if (content === "MORTALS•DO") {
+        return (element.innerHTML = "&#5847;&#5806;&#5809;&#5839;&#5800;&#5850;&#5835;&bull;&#5841;&#5806;");
       } else {
-        return (element.innerHTML = "LATOR");
+        return (element.innerHTML = "MORTALS&bull;DO");
       }
       break;
-    case "col4":
-      if (content === "MORTA") {
-        return (element.innerHTML = "&#5847;&#5806;&#5809;&#5839;&#5800;");
+    case "runes-bottom":
+      if (content === "•PEMDAS•") {
+        return (element.innerHTML = "&bull;&#5832;&#5826;&#5847;&#5841;&#5800;&#5835;&bull;");
       } else {
-        return (element.innerHTML = "MORTA");
-      }
-      break;
-    case "col5":
-      if (content === "LSDOP") {
-        return (element.innerHTML = "&#5850;&#5835;&#5841;&#5806;&#5832;");
-      } else {
-        return (element.innerHTML = "LSDOP");
-      }
-      break;
-    case "col6":
-      if (content === "EMDAS") {
-        return (element.innerHTML = "&#5826;&#5847;&#5841;&#5800;&#5835;");
-      } else {
-        return (element.innerHTML = "EMDAS");
+        return (element.innerHTML = "&bull;PEMDAS&bull;");
       }
       break;
     default:
@@ -391,6 +390,11 @@ function evaluate(numsArray, opsArray) {
 
 // Keyboard input event listener
 window.addEventListener("keydown", e => {
+  // slash = 191, ctrl = 17, shift = 16
+  // REF: https://www.toptal.com/developers/keycode
+  if (e.shiftKey || e.code == 191 || e.code == 17) {
+    e.preventDefault();
+  }
   if (!powerOn) {
     alert(powerOnMsg);
     return;
@@ -398,11 +402,6 @@ window.addEventListener("keydown", e => {
   if (screen.value.length >= 13) {
     alert(lengthMsg);
     return;
-  }
-  // slash = 191, ctrl = 17, shift = 16
-  // REF: https://www.toptal.com/developers/keycode
-  if (e.shiftKey || e.code == 191 || e.code == 17) {
-    e.preventDefault();
   }
   // Send allowed characters to display
   if (e.key.match(/^(\d|\+|\-|\*|\/|\.|Delete|Backspace)$/)) {

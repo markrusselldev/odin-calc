@@ -24,59 +24,62 @@
         <!-- ref: unicode runes, http://www.personal.psu.edu/ejp10/blogs/gotunicode/charts/runes.html 
         ODIN: &#5806;&#5841;&#5825;&#5822;
         CALC: &#5837;&#5800;&#5850;&#5837; -->
-        <div id="header-left" class="header">&#5806;&#5841;&#5825;&#5822;</div>
+        <div id="header-left" class="header vertical-text">&#5806;&#5841;&#5825;&#5822;</div>
         <div id="header-center">
           <div class="power-button">
             <div class="odin"></div>
           </div>
         </div>
-        <div id="header-right" class="header">&#5837;&#5800;&#5850;&#5837;</div>
-        <!-- &#5842;&#5794;&#5839;&#5806;&#5822; -->
+        <div id="header-right" class="header vertical-text">&#5837;&#5800;&#5850;&#5837;</div>
       </header>
       <main>
-        <!-- "ODINS CALCULATOR" runes
+        <div class="main-top"><div id="runes-top" class="runes">&bull;&#5806;&#5841;&#5825;&#5822;&apos;&#5835;</div></div>
+        <div class="main-middle">
+          <!-- "ODINS CALCULATOR" runes
         ODINS: &#5806;&#5841;&#5825;&#5822;&#5835;
         CALCU: &#5837;&#5800;&#5850;&#5837;&#5794;
         LATOR: &#5850;&#5800;&#5839;&#5806;&#5809; -->
-        <div id="col1" class="title vertical-text">&#5806;&#5841;&#5825;&#5822;&#5835;</div>
-        <div id="col2" class="title vertical-text">&#5837;&#5800;&#5850;&#5837;&#5794;</div>
-        <div id="col3" class="title vertical-text">&#5850;&#5800;&#5839;&#5806;&#5809;</div>
-        <div class="calculator">
-          <input type="text" class="calculator-screen" value="0" disabled />
-          <div class="calculator-keys">
-            <button type="button" class="operator" value="+">+</button>
-            <button type="button" class="operator" value="-">-</button>
-            <button type="button" class="operator" value="*">&times;</button>
-            <button type="button" class="operator" value="/">&divide;</button>
-            <button type="button" value="7">7</button>
-            <button type="button" value="8">8</button>
-            <button type="button" value="9">9</button>
-            <button type="button" value="4">4</button>
-            <button type="button" value="5">5</button>
-            <button type="button" value="6">6</button>
-            <button type="button" value="1">1</button>
-            <button type="button" value="2">2</button>
-            <button type="button" value="3">3</button>
-            <button type="button" value="0">0</button>
-            <button type="button" class="decimal" value=".">.</button>
-            <button type="button" class="all-clear" value="all-clear">AC</button>
-            <button type="button" class="backspace" value="backspace">&mapstoleft;</button>
-            <button type="button" class="equal-sign" value="=">=</button>
+          <div id="runes-left" class="runes vertical-text">&#5847;&#5806;&#5809;&#5839;&#5800;&#5850;&#5835;&bull;&#5841;&#5806;</div>
+
+          <div class="calculator">
+            <input type="text" class="calculator-screen" value="0" disabled />
+            <div class="calculator-keys">
+              <button type="button" class="operator" value="+">+</button>
+              <button type="button" class="operator" value="-">-</button>
+              <button type="button" class="operator" value="*">&times;</button>
+              <button type="button" class="operator" value="/">&divide;</button>
+              <button type="button" value="7">7</button>
+              <button type="button" value="8">8</button>
+              <button type="button" value="9">9</button>
+              <button type="button" value="4">4</button>
+              <button type="button" value="5">5</button>
+              <button type="button" value="6">6</button>
+              <button type="button" value="1">1</button>
+              <button type="button" value="2">2</button>
+              <button type="button" value="3">3</button>
+              <button type="button" value="0">0</button>
+              <button type="button" class="decimal" value=".">.</button>
+              <button type="button" class="all-clear" value="all-clear">AC</button>
+              <button type="button" class="backspace" value="backspace">&mapstoleft;</button>
+              <button type="button" class="equal-sign" value="=">=</button>
+            </div>
+            <label class="custom-checkbox-container">
+              <input id="there-can-be-only-one" class="checkbox" type="checkbox" /><span class="checkmark"></span>
+              <span class="checkmark-txt">There Can Be Only One... Decimal</span>
+            </label>
           </div>
-          <label class="custom-checkbox-container">
-            <input id="there-can-be-only-one" class="checkbox" type="checkbox" /><span class="checkmark"></span>
-            <span class="checkmark-txt">There Can Be Only One... Decimal</span>
-          </label>
+
+          <div id="runes-right" class="runes vertical-text">&#5837;&#5800;&#5850;&#5837;&#5794;&#5850;&#5800;&#5839;&#5806;&#5809;</div>
         </div>
-        <div id="col4" class="title vertical-text">&#5847;&#5806;&#5809;&#5839;&#5800;</div>
-        <div id="col5" class="title vertical-text">&#5850;&#5835;&#5841;&#5806;&#5832;</div>
-        <div id="col6" class="title vertical-text">&#5826;&#5847;&#5841;&#5800;&#5835;</div>
+        <div class="main-bottom">
+          <div id="runes-bottom" class="runes">&bull;&#5832;&#5826;&#5847;&#5841;&#5800;&#5835;&bull;</div>
+        </div>
       </main>
       <footer>
         <div class="app-name">0DIN CALC</div>
         <div class="credits">
-          <span>Created by <a href="https://markrussell.dev">Mark Russell</a> for <a href="https://www.theodinproject.com">The Odin Project</a> &bull; </span>
-          <span>Built with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">HTML</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">Javascript</a></span>
+          <span>Created&nbsp;by&nbsp;<a href="https://markrussell.dev">Mark&nbsp;Russell</a>&nbsp;for&nbsp;<a href="https://www.theodinproject.com">The&nbsp;Odin&nbsp;Project</a> &bull; </span>
+          <span>Built&nbsp;with&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">HTML</a>,&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS</a>&nbsp;and&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">Javascript</a></span>
         </div>
         <div class="copyright">
           <span><span style="font-family: Arial, Helvetica, sans-serif">&copy;</span> 2022</span>

@@ -48,12 +48,12 @@ Steps:
 
 #### Design 1
 
-[Design 1 "Off"](/screenshots/odin-calc-v1-off.png?raw=true "Off")
-[Design 1 "On"](/screenshots/odin-calc-v1.png?raw=true "On")
+![Design 1 "Off"](/screenshots/odin-calc-v1-off.png?raw=true "Off")
+![Design 1 "On"](/screenshots/odin-calc-v1.png?raw=true "On")
 
 #### Design 2
 
-[Design 2, Mobile First](/screenshots/odin-calc-v2-off.png?raw=true)
+![Design 2, Mobile First](/screenshots/odin-calc-v2-off.png?raw=true)
 
 ### Unicode Rune Chart
 

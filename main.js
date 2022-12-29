@@ -37,13 +37,13 @@ thrum.loop = true;
 const laugh = new Audio("audio/odin-laugh.mp3");
 
 // Constants
-const powerOnMsg = "Great ODIN's Beard! Have You Tried Turning It On, Mortal?\nYou See That Big Round Thing At The Top?";
+const powerOnMsg = "By ODIN's Firey Beard! Have Ye Tried Turning It On, Mortal? Do Ye See That Big Round Thing At The Top?";
 const lengthMsg = "There Shall Be No More Than Thirteen Characters In These Halls, Human. Hit Backspace, Clear Or Equals!";
 const divideZeroMsg = "Odin Frowns Upon Thy Feeble Attempt To Divide By Zero And Become A God.\nBegone, Spawn Of Midgaaard!";
 const arrayMismatchMsg = "Don't You Know How Simple Math Works, Mortal? Number, Operator, Number, Etc.";
 const negativeNumMsg = "Don't Be So Negative, Human!\nNegative Numbers Are Not Allowed Here... Unless The Are Created By ODIN CALC, Of Course.";
 const hasMultiDecimalMsg = "ODIN Decrees That No More Than One Decimal Per Number Shall Be Allowed, Spawn Of Lodurr.\nA Reset Be Upon Thee!";
-const onlyOneMsg = "By Hoenir's Ghost! Uncheckth The Checkboxth Below If Thee Desiresth More Dethimals. But, Beware. There Shall Be Only One!!! (um, in each number)";
+const onlyOneMsg = "By Hoenir's Ghost! Uncheckth The Checkboxth Below If Thee Desiresth More Dethimals. But, Beware. There Shall Be Only One!!! (Um, In Each Number)";
 // Variables
 let screen = document.querySelector(".calculator-screen");
 let inputStr = "";

@@ -44,6 +44,13 @@ Steps:
 - [x] Add a “backspace” button, so the user can undo if they click the wrong number.
 - [x] Add keyboard support! You might run into an issue where keys such as (/) might cause you some trouble. Read the MDN documentation for event.preventDefault to help solve this problem.
 
+### Screenshots
+#### Design 1
+[Design 1 Off](screenshots/odin-calc-v1-off.png)
+[Design 1 On](screenshots/odin-calc-v1.png)
+#### Design 2
+[Design 2, Mobile First](screenshots/odin-calc-v2-off.png)
+
 ### Unicode Rune Chart
 
 Reference: [Got Unicode? by Elizabth Pyatt](http://www.personal.psu.edu/ejp10/blogs/gotunicode/charts/runes.html)
